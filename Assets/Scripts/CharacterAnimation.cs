@@ -25,8 +25,12 @@ public class CharacterAnimation : MonoBehaviour
 
     void OnMove(InputValue value)
     {
-        var vector = value.Get<Vector2>();
-        _vertical = (Mathf.Abs(vector.y) > Mathf.Abs(vector.x)) ? vector.y : 0;
-        _horizontal = (Mathf.Abs(vector.x) > Mathf.Abs(vector.y)) ? vector.x : 0;
+        Move(value.Get<Vector2>());
+    }
+
+    private void Move(Vector2 movementVector)
+    {
+        _vertical = (Mathf.Abs(movementVector.y) > Mathf.Abs(movementVector.x)) ? movementVector.y : 0;
+        _horizontal = (Mathf.Abs(movementVector.x) > Mathf.Abs(movementVector.y)) ? movementVector.x : 0;
     }
 }
