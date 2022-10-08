@@ -2,30 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Robot : BotBackManager
+public interface IRobot
 {
-    public Sprite[] sprite;
-    public Vector3 position;
+     Vector3 position { set; get; }
+     bool isWalking { set; get; }
 
-    private void Start() {
-        this.position = this.transform.position;
-    }
-    private void LateUpdate() {
-        this.transform.eulerAngles = this.cam.transform.eulerAngles;
-    }
+    void GoUp(float size);
+    void GoLeft(float size);
+    void GoRight(float size);
+    void GoDown(float size);
 
-    public virtual void GoUp(Vector3 pos) {
-        
-    }
-    public virtual void GoLeft(Vector3 pos) {
-
-    }
-    public virtual void GoRight(Vector3 pos) {
-
-    }
-    public virtual void GoDown(Vector3 pos) {
-
-    }
-
-    public virtual void Action() { }
+    void Action();
 }

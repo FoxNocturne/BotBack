@@ -5,30 +5,27 @@ using UnityEngine.InputSystem;
 
 public class PlayerControler : BotBackManager
 {
-    public Flotteur SelectedRobot;
-    public Robot[] Robots;
-    private Vector3 pos = Vector3.zero;
-    public float CellSize = 0.2f;              
-    public float speed = 1.0f; 
+    public GameObject SelectedRobot = null;
 
-    private void Start()
-    {
-    }
+    [SerializeField]
+    public GameObject[] Robots;
+    public float CellSize = 0.2f;
+
     public void GoForward()
     {
-        SelectedRobot.GoDown(pos + Vector3.forward * CellSize);
+        SelectedRobot.GetComponent<IRobot>().GoUp(CellSize);
     }
     public void GoBackward()
     {
-        SelectedRobot.GoDown(pos + Vector3.back * CellSize);
+        SelectedRobot.GetComponent<IRobot>().GoDown(CellSize);
     }
     public void GoLeft()
     {
-       SelectedRobot.GoLeft(pos + Vector3.left * CellSize);
+        SelectedRobot.GetComponent<IRobot>().GoLeft(CellSize);
     }
     public void GoRight()
     {
-        SelectedRobot.GoRight(pos + Vector3.right * CellSize);
+        SelectedRobot.GetComponent<IRobot>().GoRight(CellSize);
     }
 
     void FixedUpdate()
@@ -39,19 +36,20 @@ public class PlayerControler : BotBackManager
 
     public void ChangeBot(InputAction.CallbackContext context)
     {
-        if (context.performed && Robots.Length >= int.Parse(context.control.name) && Robots[int.Parse(context.control.name) - 1])
+        if (context.performed && Robots.Length >= int.Parse(context.control.name) && Robots[int.Parse(context.control.name) - 1] != null)
         {
             Debug.Log(context.control.name);
-            //SelectedRobot = Robots[int.Parse(context.control.name) - 1];
-            //pos = SelectedRobot.transform.position;
+            SelectedRobot = Robots[int.Parse(context.control.name) - 1];
         }
     }
 
+
+
     public void BotAction()
     {
-        if (SelectedRobot)
+        if (SelectedRobot != null)
         {
-            //SelectedRobot.GetComponent<Robot>().Action();
+            SelectedRobot.GetComponent<IRobot>().Action();
             Debug.Log("Action");
         }
     }

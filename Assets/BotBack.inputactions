@@ -7,39 +7,39 @@
             "actions": [
                 {
                     "name": "MoveForward",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "4b073ae1-7911-457d-bfc3-0271daf19e0c",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "MoveBack",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "62c13090-3420-425a-ab05-0fcfc825a488",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "MoveLeft",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "67c9cb51-5c2f-4654-b9a4-f63adfa4c377",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "MoveRight",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "daa6939e-5e86-4b06-84b8-898d84e83d63",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Select1",
@@ -137,7 +137,7 @@
                     "name": "",
                     "id": "fa1e44df-4418-4261-b348-cc961af94bd0",
                     "path": "<Keyboard>/w",
-                    "interactions": "Tap",
+                    "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "MoveForward",
