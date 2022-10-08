@@ -747,7 +747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc788d5515191645a297c6865d2f305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SelectedRobot: {fileID: 1568465205}
+  SelectedRobot: {fileID: 0}
   Robots:
   - {fileID: 1568465205}
   CellSize: 0.2
@@ -867,7 +867,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: []
-  speed: 5
   position: {x: 0, y: 0, z: 0}
 --- !u!65 &1568465206
 BoxCollider:
