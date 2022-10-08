@@ -499,9 +499,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 509436729}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad48617d10825084989242637cc180e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fe4c3b5c8210e443a2e36a51550cb97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  patrollingPositions:
+  - {x: 5.35, y: 2.1, z: -3.62}
+  - {x: 7.91, y: 2.1, z: -9.07}
+  - {x: 5.35, y: 2.1, z: -9.61}
+  - {x: 8.75, y: 2.1, z: -5.03}
+  goalDistance: 0.25
 --- !u!43 &661488344
 Mesh:
   m_ObjectHideFlags: 0
