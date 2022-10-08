@@ -5,60 +5,27 @@ using UnityEngine.InputSystem;
 
 public class PlayerControler : BotBackManager
 {
-    public Flotteur SelectedRobot;
+    public GameObject SelectedRobot = null;
 
-    private Vector3 pos = Vector3.zero;
-    public float CellSize = 0.2f;              
-    public float speed = 1.0f;
-    public enum Stat
-    {
-        up,
-        down,
-        left,
-        right,
-        none
-    }
-
-    public Stat stat;
-
-    private void Start()
-    {
-    }
+    [SerializeField]
+    public GameObject[] Robots;
+    public float CellSize = 0.2f;
 
     public void GoForward()
     {
-        this.stat = Stat.up;
+        SelectedRobot.GetComponent<IRobot>().GoUp(CellSize);
     }
     public void GoBackward()
     {
-        this.stat = Stat.down;
+        SelectedRobot.GetComponent<IRobot>().GoDown(CellSize);
     }
     public void GoLeft()
     {
-        this.stat = Stat.left;
+        SelectedRobot.GetComponent<IRobot>().GoLeft(CellSize);
     }
     public void GoRight()
     {
-        this.stat = Stat.right;
-    }
-
-    private void Update()
-    {
-            switch(this.stat)
-            {
-                case Stat.up:
-                    SelectedRobot.GoUp(pos + Vector3.back * CellSize);
-                    break;
-                case Stat.down:
-                    SelectedRobot.GoDown(pos + Vector3.forward * CellSize);
-                    break;
-                case Stat.left:
-                    SelectedRobot.GoLeft(pos + Vector3.left * CellSize);
-                    break;
-                case Stat.right:
-                    SelectedRobot.GoRight(pos + Vector3.left * CellSize);
-                    break;
-            }
+        SelectedRobot.GetComponent<IRobot>().GoRight(CellSize);
     }
 
     void FixedUpdate()
@@ -69,21 +36,20 @@ public class PlayerControler : BotBackManager
 
     public void ChangeBot(InputAction.CallbackContext context)
     {
-        //if (context.performed && Robots.Length >= int.Parse(context.control.name) && Robots[int.Parse(context.control.name) - 1])
-        //{
-        //    Debug.Log(context.control.name);
-        //    //SelectedRobot = Robots[int.Parse(context.control.name) - 1];
-        //    //pos = SelectedRobot.transform.position;
-        //}
+        if (context.performed && Robots.Length >= int.Parse(context.control.name) && Robots[int.Parse(context.control.name) - 1] != null)
+        {
+            Debug.Log(context.control.name);
+            SelectedRobot = Robots[int.Parse(context.control.name) - 1];
+        }
     }
 
 
 
     public void BotAction()
     {
-        if (SelectedRobot)
+        if (SelectedRobot != null)
         {
-            //SelectedRobot.GetComponent<Robot>().Action();
+            SelectedRobot.GetComponent<IRobot>().Action();
             Debug.Log("Action");
         }
     }
