@@ -12,6 +12,7 @@ public class Robot : BotBackManager
     }
     private void LateUpdate() {
         this.transform.eulerAngles = this.cam.transform.eulerAngles;
+        
     }
 
     public virtual void GoUp(Vector3 pos) {
