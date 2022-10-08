@@ -26,4 +26,6 @@ public class Robot : BotBackManager
     public virtual void GoDown(Vector3 pos) {
 
     }
+
+    public virtual void Action() { }
 }
