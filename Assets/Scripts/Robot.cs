@@ -8,4 +8,10 @@ public class Robot : BotBackManager
     {
         this.transform.eulerAngles = this.cam.transform.eulerAngles;
     }
+
+    public void GoUp() { }
+    public void GoDown() { }
+    public void GoLeft() { }
+    public void GoRight() { }
+    public void Action() { }
 }
