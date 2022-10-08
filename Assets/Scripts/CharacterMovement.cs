@@ -25,7 +25,12 @@ public class CharacterMovement : MonoBehaviour
 
     void OnMove(InputValue value)
     {
-        _movementVector = value.Get<Vector2>();
+        Move(value.Get<Vector2>());
+    }
+
+    void Move(Vector2 movementVector)
+    {
+        _movementVector = movementVector;
         _speed = _movementVector * movementSpeed;
     }
 }
