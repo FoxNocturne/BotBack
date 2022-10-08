@@ -9,7 +9,6 @@ public class Flotteur : Robot
         base.GoUp(pos);
         Debug.Log("Ok2");
         this.position = this.transform.position + pos;
-        this.walk = true;
         this.transform.position = this.position;
     }
     public override void GoDown(Vector3 pos)
