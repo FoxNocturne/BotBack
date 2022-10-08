@@ -6,26 +6,39 @@ using UnityEngine.InputSystem;
 public class PlayerControler : BotBackManager
 {
     public GameObject SelectedRobot = null;
-
-    [SerializeField]
+    
     public GameObject[] Robots;
     public float CellSize = 0.2f;
+    public int botnb = 3;
+    public int botpassed = 0;
 
     public void GoForward()
     {
-        SelectedRobot.GetComponent<IRobot>().GoUp(CellSize);
+        if (SelectedRobot != null)
+        {
+            SelectedRobot.GetComponent<IRobot>().GoUp(CellSize);
+        }
     }
     public void GoBackward()
     {
-        SelectedRobot.GetComponent<IRobot>().GoDown(CellSize);
+        if (SelectedRobot != null)
+        {
+            SelectedRobot.GetComponent<IRobot>().GoDown(CellSize);
+        }
     }
     public void GoLeft()
     {
-        SelectedRobot.GetComponent<IRobot>().GoLeft(CellSize);
+        if (SelectedRobot != null)
+        {
+            SelectedRobot.GetComponent<IRobot>().GoLeft(CellSize);
+        }
     }
     public void GoRight()
     {
-        SelectedRobot.GetComponent<IRobot>().GoRight(CellSize);
+        if (SelectedRobot != null)
+        {
+            SelectedRobot.GetComponent<IRobot>().GoRight(CellSize);
+        }
     }
 
     void FixedUpdate()
@@ -43,7 +56,23 @@ public class PlayerControler : BotBackManager
         }
     }
 
+    public void BotDeath()
+    {
+        botnb--;
+    }
 
+    public void BotEnd()
+    {
+        botpassed+=1;
+        Debug.Log("l:" + botpassed.ToString() + "/" + botnb);
+        if (botpassed == botnb)
+            LevelWin();
+    }
+
+    public void LevelWin()
+    {
+        Debug.Log("You Win");
+    }
 
     public void BotAction()
     {
