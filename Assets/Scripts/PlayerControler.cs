@@ -11,9 +11,12 @@ public class PlayerControler : BotBackManager
     public float CellSize = 0.2f;              
     public float speed = 1.0f; 
 
+    private void Start()
+    {
+    }
     public void GoForward()
     {
-        SelectedRobot.GoUp(pos + Vector3.forward * CellSize);
+        SelectedRobot.GoDown(pos + Vector3.forward * CellSize);
     }
     public void GoBackward()
     {

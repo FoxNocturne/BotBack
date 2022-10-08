@@ -285,9 +285,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc788d5515191645a297c6865d2f305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SelectedRobot: {fileID: 1568465205}
+  SelectedRobot: {fileID: 0}
   Robots:
-  - {fileID: 0}
+  - {fileID: 1568465201}
   CellSize: 0.2
   speed: 1
 --- !u!114 &136238175
