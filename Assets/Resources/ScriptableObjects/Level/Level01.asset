@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e9a01209be1eb344a3dd9c7d1c4b8a6, type: 3}
   m_Name: Level01
   m_EditorClassIdentifier: 
-  _mapSize: {x: 12, y: 12}
+  _tileMapId: 0
+  _listSpawnPos:
+  - {x: 0, y: 0}
