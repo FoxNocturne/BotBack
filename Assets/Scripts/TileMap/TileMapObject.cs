@@ -10,7 +10,7 @@ public class TileMapObject : MonoBehaviour
 
     public void Start()
     {
-        this.InstantiateTileMap(new Vector2Int(10, 10));
+        this.InstantiateTileMap(new Vector2Int(10, 30));
     }
 
     public TileObject[,] InstantiateTileMap(Vector2Int mapSize)
@@ -21,5 +21,13 @@ public class TileMapObject : MonoBehaviour
             for (int y = 0; y < mapSize.y; y++)
                 this.tileMap[x, y] = TileObject.InstantiateObject(this.tilePrefab, this, new Vector2Int(x, y));
         return this.tileMap;
+    }
+
+    void OnDrawGizmos()
+    {
+        // Allows us to visualize where the patrolling points are
+        Gizmos.color = Color.cyan;
+
+        Gizmos.DrawWireCube(transform.position + new Vector3(4.5f, -.05f, 4.5f), new Vector3(10f, .1f, 10f));
     }
 }

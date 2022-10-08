@@ -15,7 +15,7 @@ public class PlayerControler : MonoBehaviour
     {
         if ( SelectedRobot )
         {
-            SelectedRobot.GetComponent<Robot>().GoUp();
+            //SelectedRobot.GetComponent<Robot>().GoUp();
            // pos += Vector3.forward * CellSize;
         }
     }
@@ -23,7 +23,7 @@ public class PlayerControler : MonoBehaviour
     {
         if (SelectedRobot)
         {
-            SelectedRobot.GetComponent<Robot>().GoDown();
+            //SelectedRobot.GetComponent<Robot>().GoDown();
            // pos += Vector3.back * CellSize;
         }
     }
@@ -31,7 +31,7 @@ public class PlayerControler : MonoBehaviour
     {
         if (SelectedRobot)
         {
-            SelectedRobot.GetComponent<Robot>().GoLeft();
+            //SelectedRobot.GetComponent<Robot>().GoLeft();
             //pos += Vector3.left * CellSize;
         }
     }
@@ -39,7 +39,7 @@ public class PlayerControler : MonoBehaviour
     {
         if (SelectedRobot)
         {
-            SelectedRobot.GetComponent<Robot>().GoRight();
+            //SelectedRobot.GetComponent<Robot>().GoRight();
             //pos += Vector3.right * CellSize;
         }
     }
@@ -64,7 +64,7 @@ public class PlayerControler : MonoBehaviour
     {
         if (SelectedRobot)
         {
-            SelectedRobot.GetComponent<Robot>().Action();
+            //SelectedRobot.GetComponent<Robot>().Action();
             Debug.Log("Action");
         }
     }
