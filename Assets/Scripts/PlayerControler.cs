@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerControler : MonoBehaviour
+public class PlayerControler : BotBackManager
 {
     public Transform SelectedRobot = null;
     public GameObject[] Robots;
@@ -15,32 +15,28 @@ public class PlayerControler : MonoBehaviour
     {
         if ( SelectedRobot )
         {
-            SelectedRobot.GetComponent<Robot>().GoUp();
-           // pos += Vector3.forward * CellSize;
+            SelectedRobot.GetComponent<Robot>().GoUp(Vector3.forward * CellSize);
         }
     }
     public void GoBackward()
     {
         if (SelectedRobot)
         {
-            SelectedRobot.GetComponent<Robot>().GoDown();
-           // pos += Vector3.back * CellSize;
+            SelectedRobot.GetComponent<Robot>().GoDown(Vector3.back * CellSize);
         }
     }
     public void GoLeft()
     {
         if (SelectedRobot)
         {
-            SelectedRobot.GetComponent<Robot>().GoLeft();
-            //pos += Vector3.left * CellSize;
+            SelectedRobot.GetComponent<Robot>().GoLeft(Vector3.left * CellSize);
         }
     }
     public void GoRight()
     {
         if (SelectedRobot)
         {
-            SelectedRobot.GetComponent<Robot>().GoRight();
-            //pos += Vector3.right * CellSize;
+            SelectedRobot.GetComponent<Robot>().GoRight(Vector3.right * CellSize);
         }
     }
 
