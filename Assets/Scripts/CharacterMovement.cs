@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,15 +13,24 @@ public class CharacterMovement : MonoBehaviour
     private CharacterController _characterController;
     private Vector2 _speed;
     private Vector2 _movementVector;
+    private bool _movementIsEnabled;
+
+    public IEnumerator PauseMovementTemporarily()
+    {
+        _movementIsEnabled = false;
+        yield return new WaitForSeconds(1f);
+        _movementIsEnabled = true;
+    }
 
     private void Start()
     {
-        _characterController = GetComponent<CharacterController>();    
+        _movementIsEnabled = true;
+        _characterController = GetComponent<CharacterController>();
     }
 
     private void Update()
     {
-        _characterController.SimpleMove(new Vector3(_speed.x, 0, _speed.y));
+        if (_movementIsEnabled) _characterController.SimpleMove(new Vector3(_speed.x, 0, _speed.y));
     }
 
     void OnMove(InputValue value)

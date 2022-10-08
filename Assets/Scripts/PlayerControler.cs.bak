@@ -15,28 +15,48 @@ public class PlayerControler : BotBackManager
     {
         if ( SelectedRobot )
         {
+<<<<<<< HEAD
+            //SelectedRobot.GetComponent<Robot>().GoUp();
+           // pos += Vector3.forward * CellSize;
+=======
             SelectedRobot.GetComponent<Robot>().GoUp(Vector3.forward * CellSize);
+>>>>>>> d209971b500c3002a53eb78873da0e4d3f533a01
         }
     }
     public void GoBackward()
     {
         if (SelectedRobot)
         {
+<<<<<<< HEAD
+            //SelectedRobot.GetComponent<Robot>().GoDown();
+           // pos += Vector3.back * CellSize;
+=======
             SelectedRobot.GetComponent<Robot>().GoDown(Vector3.back * CellSize);
+>>>>>>> d209971b500c3002a53eb78873da0e4d3f533a01
         }
     }
     public void GoLeft()
     {
         if (SelectedRobot)
         {
+<<<<<<< HEAD
+            //SelectedRobot.GetComponent<Robot>().GoLeft();
+            //pos += Vector3.left * CellSize;
+=======
             SelectedRobot.GetComponent<Robot>().GoLeft(Vector3.left * CellSize);
+>>>>>>> d209971b500c3002a53eb78873da0e4d3f533a01
         }
     }
     public void GoRight()
     {
         if (SelectedRobot)
         {
+<<<<<<< HEAD
+            //SelectedRobot.GetComponent<Robot>().GoRight();
+            //pos += Vector3.right * CellSize;
+=======
             SelectedRobot.GetComponent<Robot>().GoRight(Vector3.right * CellSize);
+>>>>>>> d209971b500c3002a53eb78873da0e4d3f533a01
         }
     }
 
