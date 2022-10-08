@@ -8,25 +8,37 @@ public class Flotteur : Robot
     {
         base.GoUp(pos);
         Debug.Log("Ok2");
-        this.position = this.transform.position + pos;
+        if (this.isWalking == false)
+        {
+            this.position = this.transform.position + pos;
+        }
         //this.transform.position = this.position;
     }
     public override void GoDown(Vector3 pos)
     {
         base.GoDown(pos);
-        this.position = this.transform.position + pos;
+        if (this.isWalking == false)
+        {
+            this.position = this.transform.position + pos;
+        }
         //this.transform.position = this.position;
     }
     public override void GoLeft(Vector3 pos)
     {
         base.GoLeft(pos);
-        this.position = this.transform.position + pos;
+        if (this.isWalking == false)
+        {
+            this.position = this.transform.position + pos;
+        }
         //this.transform.position = this.position;
     }
     public override void GoRight(Vector3 pos)
     {
         base.GoRight(pos);
-        this.position = this.transform.position + pos;
+        if (this.isWalking == false)
+        {
+            this.position = this.transform.position + pos;
+        }
         //this.transform.position = this.position;
     }
 
@@ -34,6 +46,19 @@ public class Flotteur : Robot
 
     private void Update()
     {
-        this.transform.position = Vector3.MoveTowards(this.transform.position, this.position, Time.deltaTime);
+        if(this.isWalking == true) {
+            this.transform.position = Vector3.MoveTowards(this.transform.position, this.position, Time.deltaTime);
+        }
+        if(Vector3.Distance(this.transform.position, this.position) == 0)
+        {
+            this.isWalking = false;
+        }
+        else
+        {
+            this.isWalking = true;
+        }
+        
     }
+
+   
 }
