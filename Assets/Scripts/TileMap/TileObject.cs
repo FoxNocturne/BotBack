@@ -25,12 +25,14 @@ public class TileObject : MonoBehaviour
         instance.tileMapObject = tileMap;
         instance.tileMapPos = mapPos;
         instance.transform.position = new Vector3(instance.tileScale.x * instance.tileMapPos.x, 0, instance.tileScale.y * instance.tileMapPos.y);
-
         instance.SetTexture(mapPos);
-
         return instance;
     }
 
+    /// <summary>
+    /// Change the texture of the tile
+    /// </summary>
+    /// <param name="mapPos"></param>
     private void SetTexture(Vector2Int mapPos)
     {
         this.texture = new Texture2D(24, 24, TextureFormat.RGB24, true, true);
@@ -38,7 +40,7 @@ public class TileObject : MonoBehaviour
         this.texture.filterMode = FilterMode.Bilinear;
         this.meshRenderer.material.SetTexture("_MainTex", texture);
 
-        Color color = (mapPos.x + mapPos.y) % 2 == 0 ? Color.black : Color.white;
+        Color color = (mapPos.x + mapPos.y) % 2 == 0 ? new Color(0.4f, 0.4f, 0.4f) : Color.white;
         for (int x = 0; x < 24; x++)
             for (int y = 0; y < 24; y++)
                 this.texture.SetPixel(x, y, color);
