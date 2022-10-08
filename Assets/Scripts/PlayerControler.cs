@@ -16,7 +16,7 @@ public class PlayerControler : BotBackManager
     }
     public void GoForward()
     {
-        Robots[0].GetComponent<Robot>().GoUp( Vector3.forward);
+        SelectedRobot.GoDown(pos + Vector3.forward * CellSize);
     }
     public void GoBackward()
     {
