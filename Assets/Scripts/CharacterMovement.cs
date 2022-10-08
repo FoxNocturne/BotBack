@@ -11,6 +11,7 @@ public class CharacterMovement : MonoBehaviour
 
     private CharacterController _characterController;
     private Vector2 _speed;
+    private Vector2 _movementVector;
 
     private void Start()
     {
@@ -24,7 +25,7 @@ public class CharacterMovement : MonoBehaviour
 
     void OnMove(InputValue value)
     {
-        _speed = value.Get<Vector2>() * movementSpeed;
-        Debug.Log($"{_speed}");
+        _movementVector = value.Get<Vector2>();
+        _speed = _movementVector * movementSpeed;
     }
 }
