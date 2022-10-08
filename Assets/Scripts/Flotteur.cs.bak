@@ -11,40 +11,34 @@ public class Flotteur : Robot
         this.position = this.transform.position + pos;
 <<<<<<< HEAD
         //this.walk = true;
-=======
->>>>>>> b846d27937cae1f0c6c23f082279c0a898b5eef0
         this.transform.position = this.position;
+=======
+        //this.transform.position = this.position;
+>>>>>>> 6d1ef7f5db560d42f7bf437efa8b54e188a1331e
     }
     public override void GoDown(Vector3 pos)
     {
         base.GoDown(pos);
         this.position = this.transform.position + pos;
-        this.transform.position = this.position;
+        //this.transform.position = this.position;
     }
     public override void GoLeft(Vector3 pos)
     {
         base.GoLeft(pos);
         this.position = this.transform.position + pos;
-        this.transform.position = this.position;
+        //this.transform.position = this.position;
     }
     public override void GoRight(Vector3 pos)
     {
         base.GoRight(pos);
         this.position = this.transform.position + pos;
-        this.transform.position = this.position;
+        //this.transform.position = this.position;
     }
 
 
 
     private void Update()
     {
-        //if(Vector3.Distance(this.transform.position, this.position) > 0.1f) {
-        //    Vector3 dir = this.position - this.transform.position;
-        //    this._rb.velocity = dir.normalized * this.speed;
-        //}
-        //else {
-        //    this._rb.MovePosition(this.position);
-        //    this.walk = false;
-        //}
+        this.transform.position = Vector3.MoveTowards(this.transform.position, this.position, Time.deltaTime);
     }
 }
