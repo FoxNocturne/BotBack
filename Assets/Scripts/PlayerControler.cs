@@ -2,20 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
-public class PlayerControler : MonoBehaviour
+public class PlayerControler : BotBackManager
 {
     public Transform SelectedRobot = null;
     public GameObject[] Robots;
     Vector3 pos;
     public float CellSize = 0.2f;              
-    public float speed = 1.0f; 
+    public float speed = 1.0f;
+    public string SceneToPlay;
 
     public void GoForward()
     {
         if ( SelectedRobot )
         {
-            SelectedRobot.GetComponent<Robot>().GoUp();
+            //SelectedRobot.GetComponent<Robot>().GoUp();
            // pos += Vector3.forward * CellSize;
         }
     }
@@ -23,7 +25,7 @@ public class PlayerControler : MonoBehaviour
     {
         if (SelectedRobot)
         {
-            SelectedRobot.GetComponent<Robot>().GoDown();
+           // SelectedRobot.GetComponent<Robot>().GoDown();
            // pos += Vector3.back * CellSize;
         }
     }
@@ -31,7 +33,7 @@ public class PlayerControler : MonoBehaviour
     {
         if (SelectedRobot)
         {
-            SelectedRobot.GetComponent<Robot>().GoLeft();
+            // SelectedRobot.GetComponent<Robot>().GoLeft();
             //pos += Vector3.left * CellSize;
         }
     }
@@ -39,7 +41,7 @@ public class PlayerControler : MonoBehaviour
     {
         if (SelectedRobot)
         {
-            SelectedRobot.GetComponent<Robot>().GoRight();
+            //SelectedRobot.GetComponent<Robot>().GoRight();
             //pos += Vector3.right * CellSize;
         }
     }
@@ -64,13 +66,28 @@ public class PlayerControler : MonoBehaviour
     {
         if (SelectedRobot)
         {
-            SelectedRobot.GetComponent<Robot>().Action();
+           // SelectedRobot.GetComponent<Robot>().Action();
             Debug.Log("Action");
         }
     }
+
+    // Exit function for menu ui esit button
+    public void Exit()
+    {
+        Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;
+    }
+
+    // Play the scene store in the scenetoplay variable ( scene 1 in most of case )
+    public void Play()
+    {
+        SceneManager.LoadScene(SceneToPlay);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        GlobalTimer.Go(60f);
     }
 
     // Update is called once per frame
