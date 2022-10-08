@@ -6,6 +6,8 @@ public class Robot : BotBackManager
 {
     public Sprite[] sprite;
     public Vector3 position;
+    public bool isWalking = false;
+
 
     private void Start() {
         this.position = this.transform.position;

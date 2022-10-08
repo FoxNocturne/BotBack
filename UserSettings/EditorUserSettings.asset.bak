@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!162 &1
+EditorUserSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 4
+  m_ConfigSettings:
+    RecentlyUsedSceneGuid-0:
+      value: 5a08575f5207595a0f5d59741173094444164f7d7d2a23317c7a4465bbe1646d
+      flags: 0
+    RecentlyUsedSceneGuid-1:
+<<<<<<< HEAD
+      value: 5054055f00515d5a550c5f76112107444f4f4872747a23327e2c4f61b5b1673e
+      flags: 0
+    RecentlyUsedSceneGuid-2:
+      value: 54070c5657030f5e0b5a5a7349750c44104f4b7c7c7175317a7e1930b1b16c3a
+      flags: 0
+    RecentlyUsedSceneGuid-3:
+      value: 0104035652560a02085e547440760944134e4b2f7c7b7f357d2d4c65e3b86c60
+=======
+      value: 0104035652560a02085e547440760944134e4b2f7c7b7f357d2d4c65e3b86c60
+      flags: 0
+    RecentlyUsedSceneGuid-2:
+      value: 5054055f00515d5a550c5f76112107444f4f4872747a23327e2c4f61b5b1673e
+      flags: 0
+    RecentlyUsedSceneGuid-3:
+      value: 54070c5657030f5e0b5a5a7349750c44104f4b7c7c7175317a7e1930b1b16c3a
+      flags: 0
+    RecentlyUsedSceneGuid-3:
+      value: 0508055156040f0b5e0d5a7448755e444016407f797b7562792c1f31b3b0636a
+      flags: 0
+    RecentlyUsedSceneGuid-4:
+      value: 5054055f00515d5a550c5f76112107444f4f4872747a23327e2c4f61b5b1673e
+>>>>>>> 904b2ce03ece0857f2837c8b736c655ee390cafc
+      flags: 0
+    RecentlyUsedSceneGuid-4:
+      value: 57035200070d5c09085e5c7a1576594417164078287c77642e281b32b6b3313b
+      flags: 0
+    RecentlyUsedSceneGuid-5:
+      value: 5a08515e51070859545e082713730e44154e192f297d20367d7a4e37e0b96c3a
+      flags: 0
+    vcSharedLogLevel:
+      value: 0d5e400f0650
+      flags: 0
+  m_VCAutomaticAdd: 1
+  m_VCDebugCom: 0
+  m_VCDebugCmd: 0
+  m_VCDebugOut: 0
+  m_SemanticMergeMode: 2
+  m_DesiredImportWorkerCount: 4
+  m_StandbyImportWorkerCount: 2
+  m_IdleImportWorkerShutdownDelay: 60000
+  m_VCShowFailedCheckout: 1
+  m_VCOverwriteFailedCheckoutAssets: 1
+  m_VCProjectOverlayIcons: 1
+  m_VCHierarchyOverlayIcons: 1
+  m_VCOtherOverlayIcons: 1
+  m_VCAllowAsyncUpdate: 1
+  m_ArtifactGarbageCollection: 1
