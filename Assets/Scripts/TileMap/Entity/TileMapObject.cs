@@ -9,9 +9,7 @@ public class TileMapObject : MonoBehaviour
 
     public void Awake()
     {
-        this._tileMapRepository = new TileMapRepository();
-        this.InstantiateTileMap(this._tileMapRepository.GetTileMapById(0));
-        //this.InstantiateTileMap(this._tileMapRepository.GetTileMapById(1));
+        this._tileDictionary = Resources.Load<TileDictionary>("ScriptableObjects/TileMap/TileDictionary");
     }
 
     public TileObject[,] InstantiateTileMap(int[,] intTileMap)
