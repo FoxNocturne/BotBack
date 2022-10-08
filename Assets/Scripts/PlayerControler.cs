@@ -41,6 +41,11 @@ public class PlayerControler : BotBackManager
         }
     }
 
+    public void Start()
+    {
+        GlobalTimer.Go(60.0f);
+    }
+
     void FixedUpdate()
     {
        // if ( SelectedRobot )
@@ -80,6 +85,14 @@ public class PlayerControler : BotBackManager
         {
             SelectedRobot.GetComponent<IRobot>().Action();
             Debug.Log("Action");
+        }
+    }
+
+    public void BotStop()
+    {
+        if (SelectedRobot != null )
+        {
+            SelectedRobot.GetComponent<IRobot>().Stop();
         }
     }
 }

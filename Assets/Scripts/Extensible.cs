@@ -39,6 +39,7 @@ public class Extensible : BotBackManager, IRobot
     }
 
     public void Action() { }
+    public void Stop() { stat = Stat.none; }
 
     void Start()
     {
@@ -62,6 +63,8 @@ public class Extensible : BotBackManager, IRobot
                     break;
                 case Stat.right:
                     position = position + (Vector3.right * size);
+                    break;
+                case Stat.none:
                     break;
             }
         }

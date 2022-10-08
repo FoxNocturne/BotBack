@@ -39,6 +39,7 @@ public class Flotteur : BotBackManager ,IRobot
     }
 
     public void Action() { }
+    public void Stop() { stat = Stat.none; }
 
     void Start()
     {

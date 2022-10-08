@@ -6,16 +6,28 @@ public  class Timer
 {
     private float timer;
     private float end;
+    private float duration;
 
     public void Go( float duration )
     {
         timer = Time.time;
         end = Time.time + duration;
+        this.duration = duration;
     }
 
     public float GetTimer()
     {
         return (Time.time - timer);
+    }
+
+    public int GetTimerPc()
+    {
+        return (Mathf.FloorToInt((100f * GetTimer()) / duration));
+    }
+
+    public int GetTimerPcInv()
+    {
+        return ( 100 - GetTimerPc() );
     }
 
     public bool TimerFinish()

@@ -13,4 +13,5 @@ public interface IRobot
     void GoDown(float size);
 
     void Action();
+    void Stop();
 }
