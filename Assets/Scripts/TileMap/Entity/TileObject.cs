@@ -11,6 +11,7 @@ public class TileObject : MonoBehaviour
     public TileMapObject tileMapObject { get; protected set; }
     public Vector2Int tileMapPos { get; protected set; }
     public Vector2 tileScale { get; protected set; } = Vector3.one;
+    public bool isWalkable { get; protected set; }
 
     /// <summary>
     /// Instantiate a new TileObject
@@ -24,16 +25,25 @@ public class TileObject : MonoBehaviour
         TileObject instance = GameObject.Instantiate(prefab, tileMap.transform).GetComponent<TileObject>();
         instance.tileMapObject = tileMap;
         instance.tileMapPos = mapPos;
-        instance.transform.position = new Vector3(instance.tileScale.x * instance.tileMapPos.x, 0, instance.tileScale.y * instance.tileMapPos.y);
-        instance.SetTexture(mapPos);
+        instance.transform.localPosition = new Vector3(instance.tileScale.x * (instance.tileMapPos.x - (tileMap.size.x) / 2), 0, instance.tileScale.y * (instance.tileMapPos.y - (tileMap.size.y) / 2));
+        // instance.SetTexture(mapPos);
+        instance.Setup();
         return instance;
+    }
+    
+    /// <summary>
+    /// Setup tile's specific variables
+    /// </summary>
+    protected virtual void Setup()
+    {
+        this.isWalkable = true;
     }
 
     /// <summary>
     /// Change the texture of the tile
     /// </summary>
     /// <param name="mapPos"></param>
-    private void SetTexture(Vector2Int mapPos)
+    protected void SetTexture(Vector2Int mapPos)
     {
         this.texture = new Texture2D(24, 24, TextureFormat.RGB24, true, true);
         this.texture.wrapMode = TextureWrapMode.Clamp;
@@ -46,4 +56,5 @@ public class TileObject : MonoBehaviour
                 this.texture.SetPixel(x, y, color);
         this.texture.Apply();
     }
+
 }

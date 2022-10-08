@@ -7,7 +7,6 @@ public class BotBackManager : MonoBehaviour
 {
     static public Cam CAM;
     public  Timer GlobalTimer = new Timer();
-        
     public Cam cam { get { return CAM; } private set { } }
 
     private void Awake()

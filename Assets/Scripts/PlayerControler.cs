@@ -6,13 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class PlayerControler : BotBackManager
 {
-    public Transform SelectedRobot = null;
-    public GameObject[] Robots;
-    Vector3 pos;
+    public Robot SelectedRobot;
+    public Robot[] Robots;
+    private Vector3 pos = Vector3.zero;
     public float CellSize = 0.2f;              
     public float speed = 1.0f;
     public string SceneToPlay;
 
+    private void Start()
+    {
+        SelectedRobot = Robots[0];
+    }
     public void GoForward()
     {
         if ( SelectedRobot )
@@ -48,17 +52,17 @@ public class PlayerControler : BotBackManager
 
     void FixedUpdate()
     {
-        if ( SelectedRobot )
-            SelectedRobot.position = Vector3.MoveTowards(SelectedRobot.position, pos, Time.deltaTime * speed);   
+       // if ( SelectedRobot )
+        //    SelectedRobot.position = Vector3.MoveTowards(SelectedRobot.position, pos, Time.deltaTime * speed);   
     }
 
-    public void ChangeBot(  InputAction.CallbackContext context  )  
+    public void ChangeBot(InputAction.CallbackContext context)
     {
-        if ( context.performed &&  Robots.Length >= int.Parse(context.control.name) && Robots[ int.Parse(context.control.name) - 1] )
+        if (context.performed && Robots.Length >= int.Parse(context.control.name) && Robots[int.Parse(context.control.name) - 1])
         {
             Debug.Log(context.control.name);
-            SelectedRobot = Robots[int.Parse(context.control.name) - 1].transform;
-            pos = SelectedRobot.position;
+            //SelectedRobot = Robots[int.Parse(context.control.name) - 1];
+            //pos = SelectedRobot.transform.position;
         }
     }
 
