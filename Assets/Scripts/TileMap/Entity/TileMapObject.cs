@@ -14,6 +14,7 @@ public class TileMapObject : MonoBehaviour
     {
         this._tileMapRepository = new TileMapRepository();
         this.InstantiateTileMap(this._tileMapRepository.GetTileMapById(0));
+        //this.InstantiateTileMap(this._tileMapRepository.GetTileMapById(1));
     }
 
     public TileObject[,] InstantiateTileMap(GameObject[,] tileMapPrefab)
