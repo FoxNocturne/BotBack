@@ -6,10 +6,8 @@ using UnityEngine.SceneManagement;
 public class BotBackManager : MonoBehaviour
 {
     static public Cam CAM;
-    static public Robot ROBOT;
-
+    public  Timer GlobalTimer = new Timer();
     public Cam cam { get { return CAM; } private set { } }
-    public Robot robot { get { return ROBOT; } private set { } }
 
     private void Awake()
     {
@@ -18,11 +16,6 @@ public class BotBackManager : MonoBehaviour
             if (CAM == null)
             {
                 CAM = g.GetComponentInChildren<Cam>(true);
-            }
-
-            if (ROBOT == null)
-            {
-                ROBOT = g.GetComponentInChildren<Robot>(true);
             }
         }
     }

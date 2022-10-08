@@ -137,7 +137,7 @@
                     "name": "",
                     "id": "fa1e44df-4418-4261-b348-cc961af94bd0",
                     "path": "<Keyboard>/w",
-                    "interactions": "",
+                    "interactions": "Tap",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "MoveForward",
