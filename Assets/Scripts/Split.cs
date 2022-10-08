@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Flotteur : BotBackManager ,IRobot
+public class Split : BotBackManager, IRobot
 {
     public enum Stat
     {
@@ -65,10 +65,11 @@ public class Flotteur : BotBackManager ,IRobot
                     break;
             }
         }
-        if (this.isWalking == true) {
+        if (this.isWalking == true)
+        {
             this.transform.position = Vector3.MoveTowards(this.transform.position, this.position, Time.deltaTime);
         }
-        if(Vector3.Distance(this.transform.position, this.position) == 0)
+        if (Vector3.Distance(this.transform.position, this.position) == 0)
         {
             this.isWalking = false;
         }
@@ -76,8 +77,8 @@ public class Flotteur : BotBackManager ,IRobot
         {
             this.isWalking = true;
         }
-        
+
     }
 
-   
+
 }
