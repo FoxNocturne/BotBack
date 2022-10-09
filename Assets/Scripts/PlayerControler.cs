@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerControler : BotBackManager
 {
-    public GameObject SelectedRobot = null;
+    private GameObject SelectedRobot = null;
     
     public List<Robot> _listRobot;
     public float CellSize = 0.2f;
