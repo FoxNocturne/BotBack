@@ -86,28 +86,28 @@ public class Shoot : Robot
             switch (this.stat)
             {
                 case Stat.up:
-                    if (tilemap == null || tilemap.checkgo(new Vector2(mapcoord.x, mapcoord.y - 1)))
+                    if (tilemap == null || tilemap.checkgo(new Vector2Int(mapcoord.x, mapcoord.y - 1)))
                     {
                         mapcoord.y -= 1;
                         position = position + (Vector3.forward * size);
                     }
                     break;
                 case Stat.down:
-                    if (tilemap == null || tilemap.checkgo(new Vector2(mapcoord.x, mapcoord.y + 1)))
+                    if (tilemap == null || tilemap.checkgo(new Vector2Int(mapcoord.x, mapcoord.y + 1)))
                     {
                         mapcoord.y += 1;
                         position = position + (Vector3.back * size);
                     }
                     break;
                 case Stat.left:
-                    if (tilemap == null || tilemap.checkgo(new Vector2(mapcoord.x - 1, mapcoord.y)))
+                    if (tilemap == null || tilemap.checkgo(new Vector2Int(mapcoord.x - 1, mapcoord.y)))
                     {
                         mapcoord.x -= 1;
                         position = position + (Vector3.left * size);
                     }
                     break;
                 case Stat.right:
-                    if (tilemap == null || tilemap.checkgo(new Vector2(mapcoord.x + 1, mapcoord.y)))
+                    if (tilemap == null || tilemap.checkgo(new Vector2Int(mapcoord.x + 1, mapcoord.y)))
                     {
                         mapcoord.x += 1;
                         position = position + (Vector3.right * size);

@@ -37,8 +37,8 @@ public class TileMapObject : MonoBehaviour
     }
 
     // check at coord if the tile is walkable
-    public bool checkgo(Vector2 coord)
+    public bool checkgo(Vector2Int coord)
     {
-        return (true);
+        return (GetTileAt(coord).isWalkable);
     }
 }
