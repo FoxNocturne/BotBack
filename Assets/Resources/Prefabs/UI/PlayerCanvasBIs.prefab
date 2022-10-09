@@ -695,6 +695,8 @@ GameObject:
   - component: {fileID: 4525880232764297152}
   - component: {fileID: 4525880232764297214}
   - component: {fileID: 4525880232764297153}
+  - component: {fileID: 1984319056}
+  - component: {fileID: 1984319057}
   m_Layer: 5
   m_Name: Robot Image
   m_TagString: Untagged
@@ -760,6 +762,36 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1984319056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4525880232764297155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: -3}
+  m_UseGraphicAlpha: 1
+--- !u!114 &1984319057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4525880232764297155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &4525880232808001120
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,7 +1562,7 @@ MonoBehaviour:
   _slider: {fileID: 4525880233439210412}
   _boderImage: {fileID: 4525880232854949762}
   _normalColor: {r: 1, g: 1, b: 1, a: 1}
-  _alertColor: {r: 1, g: 0, b: 0, a: 1}
+  _alertColor: {r: 1, g: 0.390566, b: 0.390566, a: 1}
   _alertThreshold: 0.2
   _colorGradient:
     serializedVersion: 2
@@ -1676,7 +1708,6 @@ MonoBehaviour:
   _goalIconColor: {r: 0.1254902, g: 0.627451, b: 0.2509804, a: 1}
   _deathIcon: {fileID: 21300000, guid: 6413f0d0fc8c1a345803d12240f6bf49, type: 3}
   _deathIconColor: {r: 0.7529412, g: 0, b: 0, a: 1}
-  robot: {fileID: 0}
 --- !u!1 &4525880233653718799
 GameObject:
   m_ObjectHideFlags: 0
@@ -1759,7 +1790,7 @@ RectTransform:
   - {fileID: 4525880233777405893}
   - {fileID: 4525880232640531061}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1924,7 +1955,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iconTemplate: {fileID: 4525880233543547490}
-  game: {fileID: 0}
 --- !u!1 &4525880233777405892
 GameObject:
   m_ObjectHideFlags: 0
@@ -2019,6 +2049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _labelText: {fileID: 4525880232598803946}
   _valueText: {fileID: 4525880233803800648}
+  game: {fileID: 0}
 --- !u!1 &4525880233795849938
 GameObject:
   m_ObjectHideFlags: 0

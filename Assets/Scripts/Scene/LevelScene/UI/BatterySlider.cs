@@ -17,6 +17,9 @@ public class BatterySlider : MonoBehaviour
     [SerializeField] private Gradient _colorGradient;
     [SerializeField] private Image _fillerImage;
 
+    public Timer timer { get; protected set; }
+    private bool isLowBatteryAnimated = false;
+
     void Awake()
     {
         this.ChangeFillerColor();
@@ -31,7 +34,7 @@ public class BatterySlider : MonoBehaviour
     {
         this._slider.value = Mathf.Max(Mathf.Min(this._slider.maxValue, value), 0);
         this.ChangeFillerColor();
-        if (this.IsUnderAlertThreshold()) StartCoroutine(this.RunAlertAnimation());
+        if (this.IsUnderAlertThreshold() && !this.isLowBatteryAnimated) StartCoroutine(this.RunAlertAnimation());
     }
 
     public void ChangeFillerColor()
@@ -41,12 +44,14 @@ public class BatterySlider : MonoBehaviour
 
     private IEnumerator RunAlertAnimation()
     {
+        this.isLowBatteryAnimated = true;
         while (this.IsUnderAlertThreshold()) {
             this._boderImage.color = this._alertColor;
             yield return new WaitForSeconds(0.08f);
             this._boderImage.color = this._normalColor;
             yield return new WaitForSeconds(0.08f);
         }
+        this.isLowBatteryAnimated = false;
     }
 
     private bool IsUnderAlertThreshold()

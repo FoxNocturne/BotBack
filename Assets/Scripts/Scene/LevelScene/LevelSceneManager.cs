@@ -10,7 +10,9 @@ public class LevelSceneManager : MonoBehaviour
 
     [Header("GUI")]
     [SerializeField] private PlayerControler _playerController;
+    [SerializeField] private BatterySlider _guiBattery;
     [SerializeField] private RobotWrapperCanvas _guiRobot;
+
 
     public float timeRemaining { get; private set; } = 100;
     public List<Robot> listPlayerRobot { get; private set; }
@@ -18,6 +20,11 @@ public class LevelSceneManager : MonoBehaviour
     void Start()
     {
         this.LoadLevel(this._levelDictionary.GetById(0));
+    }
+
+    void Update()
+    {
+        this._guiBattery.SetValue(BotBackManager.GlobalTimer.GetTimerPcInv());
     }
 
     public void LoadLevel(LevelScript levelScript)
@@ -34,5 +41,8 @@ public class LevelSceneManager : MonoBehaviour
             this.listPlayerRobot.Add(newRobot);
         }
         this._playerController.SetListRobot(this.listPlayerRobot);
+
+        // Initialiser la UI
+        this._guiBattery.SetMaxValue(100);
     }
 }

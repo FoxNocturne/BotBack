@@ -160,6 +160,7 @@ MonoBehaviour:
   tileMapObject: {fileID: 1351447984}
   _levelDictionary: {fileID: 11400000, guid: b7dbfbd21337cd94ba89566bdda44553, type: 2}
   _playerController: {fileID: 28086369}
+  _guiBattery: {fileID: 1522212612}
   _guiRobot: {fileID: 1477602023}
 --- !u!114 &28086368
 MonoBehaviour:
@@ -216,7 +217,6 @@ MonoBehaviour:
   SelectedRobot: {fileID: 0}
   _listRobot: []
   CellSize: 1
-  botnb: 0
   botpassed: 0
   tool: {fileID: 625688213}
 --- !u!114 &28086370
@@ -700,6 +700,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Square Water
       objectReference: {fileID: 0}
+    - target: {fileID: 1601693967802005805, guid: b1b6a4a4712a0364bbffc21e45491ba2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2333152634366561086, guid: b1b6a4a4712a0364bbffc21e45491ba2,
         type: 3}
       propertyPath: m_RootOrder
@@ -1108,7 +1113,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1428360042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1151,6 +1156,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 484baf81348631b4c98233ea6230db1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1522212612 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4525880233439210413, guid: ac23be3c8a02fb545b35e0d68249086d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1669236774}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfa7801115825244196831d52a916f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1669236774
@@ -1371,6 +1388,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCanvasBIs
       objectReference: {fileID: 0}
+    - target: {fileID: 4525880233777405889, guid: ac23be3c8a02fb545b35e0d68249086d,
+        type: 3}
+      propertyPath: game
+      value: 
+      objectReference: {fileID: 28086369}
     - target: {fileID: 4525880233896229487, guid: ac23be3c8a02fb545b35e0d68249086d,
         type: 3}
       propertyPath: m_AnchorMax.y

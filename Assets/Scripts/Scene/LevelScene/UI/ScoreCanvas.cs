@@ -11,8 +11,13 @@ public class ScoreCanvas : MonoBehaviour
     private int _displayedScore;
     private int _trueScore;
     private bool _isChangingScore;
+    public PlayerControler game;
     private List<int> _listGap = new List<int>() { 1000, 500, 100, 50, 10, 5, 1 };
 
+    void Update()
+    {
+        SetValue(game.botpassed);
+    }
     public void SetValue(int value)
     {
         this._trueScore = value;
