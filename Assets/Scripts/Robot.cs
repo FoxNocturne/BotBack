@@ -31,12 +31,9 @@ public abstract class Robot : BotBackManager
     {
         Robot instance = GameObject.Instantiate(robot.gameObject, tile.transform.position, tile.transform.rotation).GetComponent<Robot>();
         instance.position = tile.transform.position;
-<<<<<<< HEAD
-        instance.currentTileObject = tile;
-=======
         instance.mapcoord = tile.tileMapPos;
         instance.tilemap = tile.tileMapObject;
->>>>>>> 98753d3 (l)
+        instance.currentTileObject = tile;
         return instance;
     }
 
