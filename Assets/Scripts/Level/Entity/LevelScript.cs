@@ -6,7 +6,7 @@ public class LevelScript : ScriptableObject
 {
     [SerializeField] private int _tileMapId;
     [SerializeField] private List<Vector2Int> _listSpawnPos;
-    [SerializeField] private List<GameObject> _listRobot;
+    [SerializeField] private List<Robot> _listRobot;
 
     public int[,] intTileMap { get { return TileMapRepository.instance.GetTileMapById(this._tileMapId); } }
     public List<LevelRobotSpawn> listRobotSpawn

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Flotteur : BotBackManager ,IRobot
+public class Flotteur : Robot
 {
     public enum Stat
     {
@@ -18,32 +18,30 @@ public class Flotteur : BotBackManager ,IRobot
     public GameObject selectT;
     public GameObject selectF;
     private bool selected = false;
-    public Vector3 position { set; get; }
-    public bool isWalking { set; get; }
-    public void GoUp(float size)
+    public override void GoUp(float size)
     {
         stat = Stat.up;
         this.size = size;
     }
-    public void GoDown(float size)
+    public override void GoDown(float size)
     {
         stat = Stat.down;
         this.size = size;
     }
-    public void GoLeft(float size)
+    public override void GoLeft(float size)
     {
         stat = Stat.left;
         this.size = size;
     }
-    public void GoRight(float size)
+    public override void GoRight(float size)
     {
         stat = Stat.right;
         this.size = size;
     }
 
-    public void Action() { }
-    public void Stop() { stat = Stat.none; }
-    public void Select()
+    public override void Action() { }
+    public override void Stop() { stat = Stat.none; }
+    public override void Select()
     {
         if (selected)
         {
@@ -95,8 +93,8 @@ public class Flotteur : BotBackManager ,IRobot
         {
             this.isWalking = true;
         }
+
         
     }
 
-   
 }

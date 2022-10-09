@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MechaFlyAnimationOverrideController
+  m_Controller: {fileID: 9100000, guid: b3e5c5056c81bed4d855e80f0efe80f4, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 50f96819d5d20d540b78b5b1f8511b30, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 954ea408bb9036d42bcdb567a20445d5, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 47ea7a2b94cd7864bac61ee3d2840a10, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a31dbe104882c134cac514a92a7066e3, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: fbbf1dc514d9ace4db95adf34c37aadb, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 18a47577aeae2c447b67449604431bdf, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: c54e81974fd1a3c4884123a122f30468, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 306bb9ce5ba318f4c92677939f795dc3, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 43fa4fac40829c747b9aba3a229c0b64, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6322d872250a2e5428759164b1f25709, type: 2}
