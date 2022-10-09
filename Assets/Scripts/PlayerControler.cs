@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerControler : BotBackManager
 {
-    private GameObject SelectedRobot = null;
+    public GameObject SelectedRobot = null;
     
     public List<Robot> _listRobot;
     public float CellSize = 0.2f;
@@ -60,6 +61,12 @@ public class PlayerControler : BotBackManager
         }
     }
 
+    public void Update()
+    {
+       if( GlobalTimer.TimerFinish() )
+            SceneManager.LoadScene("GameOver");
+    }
+
     public void BotAdd()
     {
         botnb++;
@@ -68,6 +75,8 @@ public class PlayerControler : BotBackManager
     public void BotDeath()
     {
         botnb--;
+        if (botnb == 0)
+            SceneManager.LoadScene("GameOver");
     }
 
     public void BotEnd()
@@ -81,7 +90,7 @@ public class PlayerControler : BotBackManager
     public void LevelWin()
     {
         win = true;
-        Debug.Log("You Win");
+        SceneManager.LoadScene("QuestClear");
     }
 
     public void BotAction()
