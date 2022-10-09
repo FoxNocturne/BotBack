@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Split : BotBackManager, IRobot
+public class Shoot : BotBackManager, IRobot
 {
     public enum Stat
     {
