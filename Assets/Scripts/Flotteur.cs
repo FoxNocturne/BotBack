@@ -6,14 +6,14 @@ public class Flotteur : Robot
 {
     public enum Stat
     {
+        none,
         up,
         down,
         left,
-        right,
-        none
+        right
     }
 
-    public Stat stat;
+    public Stat stat = Stat.none;
     private float size;
     public GameObject selectT;
     public GameObject selectF;
@@ -69,16 +69,16 @@ public class Flotteur : Robot
             switch (this.stat)
             {
                 case Stat.up:
-                    if (tilemap == null || tilemap.checkgo(new Vector2Int(mapcoord.x, mapcoord.y - 1)) )
+                    if (tilemap == null || tilemap.checkgo(new Vector2Int(mapcoord.x, mapcoord.y + 1)) )
                     {
-                        mapcoord.y -= 1;
+                        mapcoord.y += 1;
                         position = position + (Vector3.forward * size);
                     }
                     break;
                 case Stat.down:
-                    if (tilemap == null || tilemap.checkgo(new Vector2Int(mapcoord.x, mapcoord.y + 1)))
+                    if (tilemap == null || tilemap.checkgo(new Vector2Int(mapcoord.x, mapcoord.y - 1)))
                     {
-                        mapcoord.y += 1;
+                        mapcoord.y -= 1;
                         position = position + (Vector3.back * size);
                     }
                     break;
