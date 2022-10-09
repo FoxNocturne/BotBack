@@ -7,7 +7,7 @@ public abstract class Robot : BotBackManager
 {
      public Vector3 position { set; get; }
      public bool isWalking { set; get; }
-    public Vector2 mapcoord;
+    public Vector2Int mapcoord;
     public TileMapObject tilemap;
     public Sprite visual;
     public Rigidbody rb { get; set; }
@@ -31,7 +31,12 @@ public abstract class Robot : BotBackManager
     {
         Robot instance = GameObject.Instantiate(robot.gameObject, tile.transform.position, tile.transform.rotation).GetComponent<Robot>();
         instance.position = tile.transform.position;
+<<<<<<< HEAD
         instance.currentTileObject = tile;
+=======
+        instance.mapcoord = tile.tileMapPos;
+        instance.tilemap = tile.tileMapObject;
+>>>>>>> 98753d3 (l)
         return instance;
     }
 
