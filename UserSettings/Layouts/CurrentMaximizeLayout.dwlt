@@ -24,7 +24,11 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
+<<<<<<< HEAD
   controlID: 79335
+=======
+  controlID: 9224
+>>>>>>> a1f3d4e (Better UI)
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -149,7 +153,11 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
+<<<<<<< HEAD
   controlID: 79312
+=======
+  controlID: 9225
+>>>>>>> a1f3d4e (Better UI)
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -174,7 +182,11 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
+<<<<<<< HEAD
   controlID: 79239
+=======
+  controlID: 9203
+>>>>>>> a1f3d4e (Better UI)
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -235,7 +247,11 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 139.33334}
       m_SelectedIDs: 
       m_LastClickedID: 0
+<<<<<<< HEAD
       m_ExpandedIDs: 5c805dff468b5dff34c05dffc0fe67fffcff67ff360e6cff403471ff8c1d74ffdcee78ff44f078ff2ef178ff92f378ff88f678ff0cfd78ffb00079ffc40379ff44228effa02b8eff565ea1ffa820c5ff7c3ad5ff08bbe2ffdc0ae9ff2610e9ff5c07efff126df5ff7e9ff5ff02fbffff10fbffff186e000022820000bab10000ca460100624701007e4701003280010052800100
+=======
+      m_ExpandedIDs: 10fbffff086f0000746f0000
+>>>>>>> a1f3d4e (Better UI)
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -276,11 +292,19 @@ MonoBehaviour:
     serializedVersion: 2
     x: 320.66666
     y: 0
+<<<<<<< HEAD
     width: 959.3334
     height: 318.66666
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 8}
+=======
+    width: 755.2
+    height: 428
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
+  m_ActualView: {fileID: 2}
+>>>>>>> a1f3d4e (Better UI)
   m_Panes:
   - {fileID: 8}
   - {fileID: 9}
@@ -726,12 +750,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ProjectBrowser
+  m_Name: ConsoleWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
     y: 0
     width: 501.33334
     height: 500.66666
@@ -745,6 +770,20 @@ MonoBehaviour:
   m_Selected: 0
   m_LastSelected: 1
 --- !u!114 &12
+=======
+    y: 428
+    width: 998.4
+    height: 294.8
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
+  m_ActualView: {fileID: 11}
+  m_Panes:
+  - {fileID: 10}
+  - {fileID: 11}
+  m_Selected: 1
+  m_LastSelected: 0
+--- !u!114 &10
+>>>>>>> a1f3d4e (Better UI)
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -798,10 +837,17 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
+<<<<<<< HEAD
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 92710000
     m_LastClickedID: 29074
     m_ExpandedIDs: 00000000906f0000926f000098710000a07100001e9e0000349e0000529f0000eeda0000f4da0000dc430100de7a010000ca9a3b
+=======
+    scrollPos: {x: 0, y: 194.20001}
+    m_SelectedIDs: 94720000
+    m_LastClickedID: 29332
+    m_ExpandedIDs: 00000000f46f0000f66f0000f86f0000fa6f0000587200005c7200009672000098720000a072000000ca9a3bffffff7f
+>>>>>>> a1f3d4e (Better UI)
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -829,7 +875,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000906f0000926f000098710000a07100001e9e0000349e0000529f0000eeda0000f4da0000dc430100de7a010000ca9a3b
+=======
+    m_ExpandedIDs: 00000000f46f0000f86f0000fa6f00005c7200009672000098720000a072000000ca9a3bffffff7f
+>>>>>>> a1f3d4e (Better UI)
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -854,10 +904,17 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
+<<<<<<< HEAD
     m_SelectedInstanceIDs: 26805dff
     m_LastClickedInstanceID: -10649562
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300005272000048740000
+=======
+    m_SelectedInstanceIDs: 446f0000
+    m_LastClickedInstanceID: 28484
+    m_HadKeyboardFocusLastEvent: 1
+    m_ExpandedInstanceIDs: c6230000
+>>>>>>> a1f3d4e (Better UI)
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1034,7 +1091,11 @@ MonoBehaviour:
     m_CachedPref: 160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
+<<<<<<< HEAD
   m_LastInspectedObjectInstanceID: -10649562
+=======
+  m_LastInspectedObjectInstanceID: 28484
+>>>>>>> a1f3d4e (Better UI)
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
