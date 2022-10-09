@@ -4,96 +4,40 @@ using UnityEngine;
 
 public class Flotteur : Robot
 {
-    public enum Stat
-    {
-        none,
-        up,
-        down,
-        left,
-        right
-    }
-
-    public Stat stat = Stat.none;
-    private float size;
-    public GameObject selectT;
-    public GameObject selectF;
-    private bool selected = false;
-    public override void GoUp(float size)
-    {
-        stat = Stat.up;
-        this.size = size;
-    }
-    public override void GoDown(float size)
-    {
-        stat = Stat.down;
-        this.size = size;
-    }
-    public override void GoLeft(float size)
-    {
-        stat = Stat.left;
-        this.size = size;
-    }
-    public override void GoRight(float size)
-    {
-        stat = Stat.right;
-        this.size = size;
-    }
-
     public override void Action() { }
-    public override void Stop() { stat = Stat.none; }
-    public override void Select()
-    {
-        if (selected)
-        {
-            selectF.SetActive(true);
-            selectT.SetActive(false);
-            selected = false;
-        }
-        else
-        {
-            selectF.SetActive(false);
-            selectT.SetActive(true);
-            selected = true;
-        }
-    }
-
-    void Start()
-    {
-        position = transform.position;
-    }
 
     private void Update()
     {
         if (this.isWalking == false)
         {
-            switch (this.stat)
+            switch (this.currentStatus)
             {
                 case Stat.up:
                     if (tilemap == null || tilemap.checkgo(new Vector2Int(mapcoord.x, mapcoord.y + 1)) )
                     {
                         mapcoord.y += 1;
-                        position = position + (Vector3.forward * size);
+                        position = position + (Vector3.forward * this.tileSize);
                     }
                     break;
                 case Stat.down:
                     if (tilemap == null || tilemap.checkgo(new Vector2Int(mapcoord.x, mapcoord.y - 1)))
                     {
                         mapcoord.y -= 1;
-                        position = position + (Vector3.back * size);
+                        position = position + (Vector3.back * this.tileSize);
                     }
                     break;
                 case Stat.left:
                     if (tilemap == null || tilemap.checkgo(new Vector2Int(mapcoord.x - 1, mapcoord.y)))
                     {
                         mapcoord.x -= 1;
-                        position = position + (Vector3.left * size);
+                        position = position + (Vector3.left * this.tileSize);
                     }
                     break;
                 case Stat.right:
                     if (tilemap == null || tilemap.checkgo(new Vector2Int(mapcoord.x + 1, mapcoord.y)))
                     {
                         mapcoord.x += 1;
-                        position = position + (Vector3.right * size);
+                        position = position + (Vector3.right * this.tileSize);
                     }
                     break;
             }

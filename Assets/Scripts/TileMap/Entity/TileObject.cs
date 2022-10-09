@@ -9,7 +9,7 @@ public class TileObject : MonoBehaviour
 
     public Texture2D texture { get; protected set; }
     public TileMapObject tileMapObject { get; protected set; }
-    public Vector2Int tileMapPos; // { get; protected set; }
+    public Vector2Int tileMapPos { get; protected set; }
     public Vector2 tileScale { get; protected set; } = Vector3.one;
     public bool isWalkable { get; protected set; }
     public bool isKill { get; protected set; }

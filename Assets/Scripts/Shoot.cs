@@ -4,79 +4,50 @@ using UnityEngine;
 
 public class Shoot : Robot
 {
-    public enum Stat
-    {
-        up,
-        down,
-        left,
-        right,
-        none
-    }
-
     public Stat stat;
-    public GameObject selectT;
-    public GameObject selectF; 
     public Transform pointShoot;
     public LineRenderer lineRenderer;
     private Vector3 _directionLaser = Vector3.forward;
     private bool _shootLaser = false;
-    private bool selected = false;
     private float size;
+
     public override void GoUp(float size)
     {
-        stat = Stat.up;
+        base.GoUp(size);
         this._shootLaser = false;
-        this.size = size;
         this._directionLaser = Vector3.forward;
     }
+
     public override void GoDown(float size)
     {
-        stat = Stat.down;
+        base.GoDown(size);
         this._directionLaser = Vector3.back;
         this._shootLaser = false;
-        this.size = size;
     }
+
     public override void GoLeft(float size)
     {
-        stat = Stat.left;
+        base.GoLeft(size);
         this._directionLaser = Vector3.left;
         this._shootLaser = false;
-        this.size = size;
     }
+
     public override void GoRight(float size)
     {
-        stat = Stat.right;
+        base.GoRight(size);
         this._directionLaser = Vector3.right;
         this._shootLaser = false;
-        this.size = size;
     }
 
-    public override void Action() { this._shootLaser = true;
-        stat = Stat.none;
-    }
-    public override void Stop() {
+    public override void Stop()
+    {
+        base.Stop();
         this._shootLaser = false;
-        
-    }
-    public override void Select()
-    {
-        if ( selected )
-        {
-            selectF.SetActive(true);
-            selectT.SetActive(false);
-            selected = false;
-        }
-        else
-        {
-            selectF.SetActive(false);
-            selectT.SetActive(true);
-            selected = true;
-        }
     }
 
-    void Start()
-    {
-        position = transform.position;
+    public override void Action() {
+        this._shootLaser = true;
+        stat = Stat.none;
     }
 
     private void Update()
