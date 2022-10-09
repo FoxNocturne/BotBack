@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: LevelDictionary
   m_EditorClassIdentifier: 
   _listItem:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 43b6fb66fea5d3c448885e66efc5689d, type: 2}
+  - {fileID: 11400000, guid: 1179b12b2e178dd46b67cd97edec0ba0, type: 2}
+  - {fileID: 11400000, guid: ffade97bb7536e749b2aa831ba56692c, type: 2}

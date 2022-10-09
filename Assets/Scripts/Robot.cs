@@ -5,23 +5,24 @@ using UnityEngine.Events;
 
 public abstract class Robot : BotBackManager
 {
-    public enum Stat { none, up, down, left, right }
+    [Header("Robot properties")]
+    public Sprite visual;
+    public float robotSpeed = 2f;
+    public GameObject selectT;
+    public GameObject selectF;
 
+    public enum Stat { none, up, down, left, right }
     public Vector3 position { get; protected set; }
     public bool isWalking { get; protected set; }
     public Stat currentStatus { get; protected set; } = Stat.none;
     public float tileSize { get; protected set; }
     public bool isSelected { get; protected set; } = false;
-
-    public Vector2Int mapcoord;
-    public TileMapObject tilemap;
-    public Sprite visual;
-    public PlayerControler game;
+    protected Vector2Int mapcoord;
+    public TileMapObject tilemap { get; protected set; }
+    public PlayerControler game { get; protected set; }
     public Rigidbody rb { get; set; }
-    public UnityEvent onDeath = new UnityEvent();
-    public UnityEvent onGoal = new UnityEvent();
-    public GameObject selectT;
-    public GameObject selectF;
+    public UnityEvent onDeath { get; protected set; } = new UnityEvent();
+    public UnityEvent onGoal { get; protected set; } = new UnityEvent();
 
     private void Awake()
     {
@@ -72,6 +73,62 @@ public abstract class Robot : BotBackManager
     public virtual void Stop()
     {
         this.currentStatus = Stat.none;
+    }
+
+    public virtual void Move()
+    {
+        if (this.isWalking == false) {
+            switch (this.currentStatus) {
+                case Stat.up:
+                    if (tilemap == null || tilemap.checkgo(new Vector2Int(mapcoord.x, mapcoord.y + 1)))
+                    {
+                        mapcoord.y += 1;
+                        position = position + (Vector3.forward * this.tileSize);
+                    }
+                    else
+                    {
+                        this.currentStatus = Stat.down;
+                    }
+                    break;
+                case Stat.down:
+                    if (tilemap == null || tilemap.checkgo(new Vector2Int(mapcoord.x, mapcoord.y - 1)))
+                    {
+                        mapcoord.y -= 1;
+                        position = position + (Vector3.back * this.tileSize);
+                    }
+                    else
+                    {
+                        this.currentStatus = Stat.up;
+                    }
+                    break;
+                case Stat.left:
+                    if (tilemap == null || tilemap.checkgo(new Vector2Int(mapcoord.x - 1, mapcoord.y)))
+                    {
+                        mapcoord.x -= 1;
+                        position = position + (Vector3.left * this.tileSize);
+                    }
+                    else
+                    {
+                        this.currentStatus = Stat.right;
+                    }
+                    break;
+                case Stat.right:
+                    if (tilemap == null || tilemap.checkgo(new Vector2Int(mapcoord.x + 1, mapcoord.y)))
+                    {
+                        mapcoord.x += 1;
+                        position = position + (Vector3.right * this.tileSize);
+                    }
+                    else
+                    {
+                        this.currentStatus = Stat.left;
+                    }
+                    break;
+            }
+        }
+        if (this.isWalking == true) {
+            this.transform.position = Vector3.MoveTowards(this.transform.position, this.position, Time.deltaTime * this.robotSpeed);
+        }
+
     }
 
     public abstract void Action();

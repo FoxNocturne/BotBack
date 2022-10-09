@@ -6,7 +6,7 @@ public class LevelSceneManager : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
     [SerializeField] private TileMapObject tileMapObject;
-    [SerializeField] private LevelScript levelScript;
+    [SerializeField] private LevelDictionary _levelDictionary;
 
     [Header("GUI")]
     [SerializeField] private PlayerControler _playerController;
@@ -17,7 +17,7 @@ public class LevelSceneManager : MonoBehaviour
 
     void Start()
     {
-        this.LoadLevel(this.levelScript);
+        this.LoadLevel(this._levelDictionary.GetById(0));
     }
 
     public void LoadLevel(LevelScript levelScript)

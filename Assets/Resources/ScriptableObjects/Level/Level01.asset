@@ -15,5 +15,7 @@ MonoBehaviour:
   _tileMapId: 0
   _listSpawnPos:
   - {x: 4, y: 6}
+  - {x: 4, y: 5}
   _listRobot:
   - {fileID: 534471808, guid: 24ef2dddae9820d4fb8da92c4380fecc, type: 3}
+  - {fileID: 4913566528581346048, guid: 0c90103af80f05f409ce35e44c54086e, type: 3}

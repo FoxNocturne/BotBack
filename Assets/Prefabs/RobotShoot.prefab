@@ -4923,16 +4923,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visual: {fileID: 21300000, guid: 2adf41add5cde124489d701ff90c6435, type: 3}
-  icon: {fileID: 21300000, guid: 2adf41add5cde124489d701ff90c6435, type: 3}
-  onDeath:
-    m_PersistentCalls:
-      m_Calls: []
-  onGoal:
-    m_PersistentCalls:
-      m_Calls: []
-  stat: 0
+  robotSpeed: 2
   selectT: {fileID: 2807205028870787029}
   selectF: {fileID: 5609291313940176505}
+  stat: 0
   pointShoot: {fileID: 1785888020}
   lineRenderer: {fileID: 1897320162}
 --- !u!120 &1897320162

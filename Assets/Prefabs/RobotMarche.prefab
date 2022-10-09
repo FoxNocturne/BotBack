@@ -328,17 +328,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01720637dd6014547bdc210d15af3448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapcoord: {x: 0, y: 0}
-  tilemap: {fileID: 0}
   visual: {fileID: 21300000, guid: 944d98fc9d02fc346b63daee55d076fc, type: 3}
-  game: {fileID: 0}
-  onDeath:
-    m_PersistentCalls:
-      m_Calls: []
-  onGoal:
-    m_PersistentCalls:
-      m_Calls: []
-  stat: 0
+  robotSpeed: 2
   selectT: {fileID: 4770324578665418805}
   selectF: {fileID: 4894454116113978238}
 --- !u!1 &9173459843530185089
