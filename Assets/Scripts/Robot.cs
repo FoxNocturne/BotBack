@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public abstract class Robot : BotBackManager
 {
      public Vector3 position { set; get; }
      public bool isWalking { set; get; }
+    public Sprite visual;
 
     public Sprite icon;
     public UnityEvent onDeath = new UnityEvent();

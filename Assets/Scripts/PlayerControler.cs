@@ -11,6 +11,7 @@ public class PlayerControler : BotBackManager
     public float CellSize = 0.2f;
     public int botnb = 3;
     public int botpassed = 0;
+    public ControlWrapperCanvas tool;
     private bool win = false;
 
     public void GoForward()
@@ -46,7 +47,6 @@ public class PlayerControler : BotBackManager
     {
         GlobalTimer.Go(60.0f);
     }
-    
     public void ChangeBot(InputAction.CallbackContext context)
     {
         if (!win && context.performed
@@ -56,6 +56,7 @@ public class PlayerControler : BotBackManager
             if (SelectedRobot != null) { SelectedRobot.GetComponent<Robot>().Select(); }
             SelectedRobot = this._listRobot[int.Parse(context.control.name) - 1].gameObject;
             SelectedRobot.GetComponent<Robot>().Select();
+            tool.Show(SelectedRobot.GetComponent<Robot>().visual);
         }
     }
 
