@@ -1422,7 +1422,6 @@ GameObject:
   - component: {fileID: 4525880233439210415}
   - component: {fileID: 4525880233439210412}
   - component: {fileID: 4525880233439210413}
-  - component: {fileID: 4525880233439210410}
   m_Layer: 5
   m_Name: Battery Slider
   m_TagString: Untagged
@@ -1562,18 +1561,6 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   _fillerImage: {fileID: 4525880232722613505}
---- !u!114 &4525880233439210410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4525880233439210414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec95d05499c0e124ba80619498edd91e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4525880233543547494
 GameObject:
   m_ObjectHideFlags: 0
@@ -1688,6 +1675,7 @@ MonoBehaviour:
   _goalIconColor: {r: 0.1254902, g: 0.627451, b: 0.2509804, a: 1}
   _deathIcon: {fileID: 21300000, guid: 6413f0d0fc8c1a345803d12240f6bf49, type: 3}
   _deathIconColor: {r: 0.7529412, g: 0, b: 0, a: 1}
+  robot: {fileID: 0}
 --- !u!1 &4525880233653718799
 GameObject:
   m_ObjectHideFlags: 0
@@ -1959,6 +1947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iconTemplate: {fileID: 4525880233543547490}
+  game: {fileID: 0}
 --- !u!1 &4525880233777405892
 GameObject:
   m_ObjectHideFlags: 0
@@ -1972,7 +1961,6 @@ GameObject:
   - component: {fileID: 4525880233777405891}
   - component: {fileID: 4525880233777405890}
   - component: {fileID: 4525880233777405889}
-  - component: {fileID: 4525880233777405950}
   m_Layer: 5
   m_Name: Score Canvas
   m_TagString: Untagged
@@ -2078,19 +2066,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _labelText: {fileID: 4525880232598803946}
   _valueText: {fileID: 4525880233803800648}
---- !u!114 &4525880233777405950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4525880233777405892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6a29ce0fb0447d4c94f8364744860c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  game: {fileID: 0}
 --- !u!1 &4525880233795849938
 GameObject:
   m_ObjectHideFlags: 0
