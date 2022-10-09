@@ -14,4 +14,5 @@ public interface IRobot
 
     void Action();
     void Stop();
+    void Select();
 }

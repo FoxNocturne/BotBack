@@ -14,6 +14,9 @@ public class Split : BotBackManager, IRobot
     }
 
     public Stat stat;
+    public GameObject selectT;
+    public GameObject selectF;
+    private bool selected = false;
     private float size;
     public Vector3 position { set; get; }
     public bool isWalking { set; get; }
@@ -40,6 +43,21 @@ public class Split : BotBackManager, IRobot
 
     public void Action() { }
     public void Stop() { stat = Stat.none; }
+    public void Select()
+    {
+        if ( selected )
+        {
+            selectF.SetActive(true);
+            selectT.SetActive(false);
+            selected = false;
+        }
+        else
+        {
+            selectF.SetActive(false);
+            selectT.SetActive(true);
+            selected = true;
+        }
+    }
 
     void Start()
     {

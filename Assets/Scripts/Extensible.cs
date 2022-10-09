@@ -15,6 +15,9 @@ public class Extensible : BotBackManager, IRobot
 
     public Stat stat;
     private float size;
+    public GameObject selectT;
+    public GameObject selectF;
+    private bool selected = false;
     public Vector3 position { set; get; }
     public bool isWalking { set; get; }
     public void GoUp(float size)
@@ -40,6 +43,21 @@ public class Extensible : BotBackManager, IRobot
 
     public void Action() { }
     public void Stop() { stat = Stat.none; }
+    public void Select()
+    {
+        if (selected)
+        {
+            selectF.SetActive(true);
+            selectT.SetActive(false);
+            selected = false;
+        }
+        else
+        {
+            selectF.SetActive(false);
+            selectT.SetActive(true);
+            selected = true;
+        }
+    }
 
     void Start()
     {

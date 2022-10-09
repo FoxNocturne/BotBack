@@ -11,31 +11,32 @@ public class PlayerControler : BotBackManager
     public float CellSize = 0.2f;
     public int botnb = 3;
     public int botpassed = 0;
+    private bool win = false;
 
     public void GoForward()
     {
-        if (SelectedRobot != null)
+        if (!win && SelectedRobot != null)
         {
             SelectedRobot.GetComponent<IRobot>().GoUp(CellSize);
         }
     }
     public void GoBackward()
     {
-        if (SelectedRobot != null)
+        if (!win && SelectedRobot != null)
         {
             SelectedRobot.GetComponent<IRobot>().GoDown(CellSize);
         }
     }
     public void GoLeft()
     {
-        if (SelectedRobot != null)
+        if (!win && SelectedRobot != null)
         {
             SelectedRobot.GetComponent<IRobot>().GoLeft(CellSize);
         }
     }
     public void GoRight()
     {
-        if (SelectedRobot != null)
+        if (!win && SelectedRobot != null)
         {
             SelectedRobot.GetComponent<IRobot>().GoRight(CellSize);
         }
@@ -45,19 +46,17 @@ public class PlayerControler : BotBackManager
     {
         GlobalTimer.Go(60.0f);
     }
-
-    void FixedUpdate()
-    {
-       // if ( SelectedRobot )
-        //    SelectedRobot.position = Vector3.MoveTowards(SelectedRobot.position, pos, Time.deltaTime * speed);   
-    }
+    
 
     public void ChangeBot(InputAction.CallbackContext context)
     {
-        if (context.performed && Robots.Length >= int.Parse(context.control.name) && Robots[int.Parse(context.control.name) - 1] != null)
+        if (!win && context.performed && Robots.Length >= int.Parse(context.control.name) && Robots[int.Parse(context.control.name) - 1] != null)
         {
             Debug.Log(context.control.name);
+            if ( SelectedRobot != null )
+                SelectedRobot.GetComponent<IRobot>().Select();
             SelectedRobot = Robots[int.Parse(context.control.name) - 1];
+            SelectedRobot.GetComponent<IRobot>().Select();
         }
     }
 
@@ -76,12 +75,13 @@ public class PlayerControler : BotBackManager
 
     public void LevelWin()
     {
+        win = true;
         Debug.Log("You Win");
     }
 
     public void BotAction()
     {
-        if (SelectedRobot != null)
+        if (!win && SelectedRobot != null)
         {
             SelectedRobot.GetComponent<IRobot>().Action();
             Debug.Log("Action");
@@ -90,7 +90,7 @@ public class PlayerControler : BotBackManager
 
     public void BotStop()
     {
-        if (SelectedRobot != null )
+        if ( !win && SelectedRobot != null )
         {
             SelectedRobot.GetComponent<IRobot>().Stop();
         }
