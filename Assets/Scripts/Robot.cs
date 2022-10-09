@@ -8,7 +8,8 @@ public abstract class Robot : BotBackManager
 {
      public Vector3 position { set; get; }
      public bool isWalking { set; get; }
-    
+    public Vector2 mapcoord;
+    public TileMapObject tilemap;
     public Sprite visual;
     public Rigidbody rb { get; set; }
     public UnityEvent onDeath = new UnityEvent();

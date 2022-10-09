@@ -69,16 +69,32 @@ public class Marche : Robot
             switch (this.stat)
             {
                 case Stat.up:
-                    position = position + (Vector3.forward * size);
+                    if (tilemap == null || tilemap.checkgo(new Vector2(mapcoord.x, mapcoord.y - 1)))
+                    {
+                        mapcoord.y -= 1;
+                        position = position + (Vector3.forward * size);
+                    }
                     break;
                 case Stat.down:
-                    position = position + (Vector3.back * size);
+                    if (tilemap == null || tilemap.checkgo(new Vector2(mapcoord.x, mapcoord.y + 1)))
+                    {
+                        mapcoord.y += 1;
+                        position = position + (Vector3.back * size);
+                    }
                     break;
                 case Stat.left:
-                    position = position + (Vector3.left * size);
+                    if (tilemap == null || tilemap.checkgo(new Vector2(mapcoord.x - 1, mapcoord.y)))
+                    {
+                        mapcoord.x -= 1;
+                        position = position + (Vector3.left * size);
+                    }
                     break;
                 case Stat.right:
-                    position = position + (Vector3.right * size);
+                    if (tilemap == null || tilemap.checkgo(new Vector2(mapcoord.x + 1, mapcoord.y)))
+                    {
+                        mapcoord.x += 1;
+                        position = position + (Vector3.right * size);
+                    }
                     break;
             }
         }
