@@ -39,7 +39,7 @@ public class RobotCanvas : MonoBehaviour
     {
         this._robotImage.color = this._inactiveColor;
         this._iconImage.sprite =  this._deathIcon;
-        this._iconImage.color = this._goalIconColor;
+        this._iconImage.color = this._deathIconColor;
         this._iconImage.enabled = true;
     }
 
@@ -47,7 +47,7 @@ public class RobotCanvas : MonoBehaviour
     {
         this._robotImage.color = this._inactiveColor;
         this._iconImage.sprite = this._goalIcon;
-        this._iconImage.color = this._deathIconColor;
+        this._iconImage.color = this._goalIconColor;
         this._iconImage.enabled = true;
     }
 }
