@@ -15,13 +15,14 @@ public class RobotCanvas : MonoBehaviour
     [SerializeField] private Sprite _deathIcon;
     [SerializeField] private Color _deathIconColor;
 
-    public IRobot robot;
+    public Robot robot;
 
-    public static RobotCanvas InstantiateObject(GameObject prefab, Transform parent, IRobot robot = null)
+    public static RobotCanvas InstantiateObject(GameObject prefab, Transform parent, Robot robot = null)
     {
         RobotCanvas instance = GameObject.Instantiate(prefab, parent).GetComponent<RobotCanvas>();
         instance.PrintActive();
         instance.robot = robot;
+        robot.onDeath.AddListener(() => { instance.PrintDeath(); });
         instance.gameObject.SetActive(true);
         return instance;
     }

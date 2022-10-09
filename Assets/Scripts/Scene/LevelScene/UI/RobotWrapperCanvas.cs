@@ -7,7 +7,7 @@ public class RobotWrapperCanvas : MonoBehaviour
     [SerializeField] private RobotCanvas iconTemplate;
     private List<RobotCanvas> _listCanvas;
 
-    public RobotCanvas AddRobot(IRobot robot)
+    public RobotCanvas AddRobot(Robot robot)
     {
         var newIcon = RobotCanvas.InstantiateObject(this.iconTemplate.gameObject, this.transform, robot);
         this._listCanvas.Add(newIcon);

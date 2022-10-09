@@ -17,28 +17,28 @@ public class PlayerControler : BotBackManager
     {
         if (!win && SelectedRobot != null)
         {
-            SelectedRobot.GetComponent<IRobot>().GoUp(CellSize);
+            SelectedRobot.GetComponent<Robot>().GoUp(CellSize);
         }
     }
     public void GoBackward()
     {
         if (!win && SelectedRobot != null)
         {
-            SelectedRobot.GetComponent<IRobot>().GoDown(CellSize);
+            SelectedRobot.GetComponent<Robot>().GoDown(CellSize);
         }
     }
     public void GoLeft()
     {
         if (!win && SelectedRobot != null)
         {
-            SelectedRobot.GetComponent<IRobot>().GoLeft(CellSize);
+            SelectedRobot.GetComponent<Robot>().GoLeft(CellSize);
         }
     }
     public void GoRight()
     {
         if (!win && SelectedRobot != null)
         {
-            SelectedRobot.GetComponent<IRobot>().GoRight(CellSize);
+            SelectedRobot.GetComponent<Robot>().GoRight(CellSize);
         }
     }
 
@@ -54,9 +54,9 @@ public class PlayerControler : BotBackManager
         {
             Debug.Log(context.control.name);
             if ( SelectedRobot != null )
-                SelectedRobot.GetComponent<IRobot>().Select();
+                SelectedRobot.GetComponent<Robot>().Select();
             SelectedRobot = Robots[int.Parse(context.control.name) - 1];
-            SelectedRobot.GetComponent<IRobot>().Select();
+            SelectedRobot.GetComponent<Robot>().Select();
         }
     }
 
@@ -83,7 +83,7 @@ public class PlayerControler : BotBackManager
     {
         if (!win && SelectedRobot != null)
         {
-            SelectedRobot.GetComponent<IRobot>().Action();
+            SelectedRobot.GetComponent<Robot>().Action();
             Debug.Log("Action");
         }
     }
@@ -92,7 +92,7 @@ public class PlayerControler : BotBackManager
     {
         if ( !win && SelectedRobot != null )
         {
-            SelectedRobot.GetComponent<IRobot>().Stop();
+            SelectedRobot.GetComponent<Robot>().Stop();
         }
     }
 }
