@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class ControlWrapperCanvas : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Animator _animator;
+
+    public void Show()
     {
-        
+        this._animator.SetBool("isShown", true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Hide()
     {
-        
+        this._animator.SetBool("isShown", false);
     }
 }

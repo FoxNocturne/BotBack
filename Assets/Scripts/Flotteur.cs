@@ -93,6 +93,7 @@ public class Flotteur : Robot
         {
             this.isWalking = true;
         }
+
         
     }
 
