@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Split : Robot
+public class Marche : Robot
 {
     public enum Stat
     {
@@ -14,12 +14,10 @@ public class Split : Robot
     }
 
     public Stat stat;
-    public GameObject selectT;
-    public GameObject selectF; 
-    public Transform pointShoot;
-    public LineRenderer lineRenderer;
-    private bool selected = false;
     private float size;
+    public GameObject selectT;
+    public GameObject selectF;
+    private bool selected = false;
     public override void GoUp(float size)
     {
         stat = Stat.up;
@@ -45,7 +43,7 @@ public class Split : Robot
     public override void Stop() { stat = Stat.none; }
     public override void Select()
     {
-        if ( selected )
+        if (selected)
         {
             selectF.SetActive(true);
             selectT.SetActive(false);
@@ -97,10 +95,5 @@ public class Split : Robot
             this.isWalking = true;
         }
 
-        lineRenderer.SetPosition(0, this.transform.position);
-        lineRenderer.SetPosition(1, this.pointShoot.position);
-
     }
-    
-
 }
