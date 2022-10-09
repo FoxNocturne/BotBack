@@ -10,7 +10,7 @@ public class PlayerControler : BotBackManager
     
     public List<Robot> _listRobot;
     public float CellSize = 0.2f;
-    public int botnb = 0;
+     int botnb = 0;
     public int botpassed = 0;
     public ControlWrapperCanvas tool;
     private bool win = false;

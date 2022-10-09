@@ -13,6 +13,8 @@ public class TileObjectEnd : TileObject
         this.isWalkable = true;
         this.isKill = false;
         this.isWin = true;
+        this.isFire = false;
+        this.isVoid = false;
     }
 
     //private void OnTriggerEnter(Collider other)

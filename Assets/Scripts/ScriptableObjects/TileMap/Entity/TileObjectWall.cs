@@ -13,5 +13,7 @@ public class TileObjectWall : TileObject
         this.isWalkable = false;
         this.isKill = false;
         this.isWin = false;
+        this.isFire = false;
+        this.isVoid = false;
     }
 }

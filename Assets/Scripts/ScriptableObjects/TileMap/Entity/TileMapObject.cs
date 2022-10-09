@@ -51,4 +51,14 @@ public class TileMapObject : MonoBehaviour
     {
         return (GetTileAt(coord).isWin);
     }
+
+    public bool checkFire(Vector2Int coord)
+    {
+        return (GetTileAt(coord).isFire);
+    }
+
+    public bool checkVoid(Vector2Int coord)
+    {
+        return (GetTileAt(coord).isVoid);
+    }
 }

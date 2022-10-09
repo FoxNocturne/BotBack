@@ -122,6 +122,10 @@ public class Shoot : Robot
         if (Vector3.Distance(this.transform.position, this.position) == 0)
         {
             this.isWalking = false;
+            if (tilemap.checkKill(mapcoord))
+                Death();
+            if (tilemap.checkWin(mapcoord))
+                Goal();
         }
         else
         {

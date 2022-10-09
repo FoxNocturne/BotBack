@@ -69,28 +69,28 @@ public class Flotteur : Robot
             switch (this.stat)
             {
                 case Stat.up:
-                    if (tilemap == null || tilemap.checkgo(new Vector2Int(mapcoord.x, mapcoord.y + 1)) )
+                    if (tilemap == null || (tilemap.checkgo(new Vector2Int(mapcoord.x, mapcoord.y + 1)) || tilemap.checkVoid(new Vector2Int(mapcoord.x, mapcoord.y + 1))))
                     {
                         mapcoord.y += 1;
                         position = position + (Vector3.forward * size);
                     }
                     break;
                 case Stat.down:
-                    if (tilemap == null || tilemap.checkgo(new Vector2Int(mapcoord.x, mapcoord.y - 1)))
+                    if (tilemap == null || tilemap.checkgo(new Vector2Int(mapcoord.x, mapcoord.y - 1)) || tilemap.checkVoid(new Vector2Int(mapcoord.x, mapcoord.y + 1)))
                     {
                         mapcoord.y -= 1;
                         position = position + (Vector3.back * size);
                     }
                     break;
                 case Stat.left:
-                    if (tilemap == null || tilemap.checkgo(new Vector2Int(mapcoord.x - 1, mapcoord.y)))
+                    if (tilemap == null || tilemap.checkgo(new Vector2Int(mapcoord.x - 1, mapcoord.y)) || tilemap.checkVoid(new Vector2Int(mapcoord.x, mapcoord.y + 1)))
                     {
                         mapcoord.x -= 1;
                         position = position + (Vector3.left * size);
                     }
                     break;
                 case Stat.right:
-                    if (tilemap == null || tilemap.checkgo(new Vector2Int(mapcoord.x + 1, mapcoord.y)))
+                    if (tilemap == null || tilemap.checkgo(new Vector2Int(mapcoord.x + 1, mapcoord.y)) || tilemap.checkVoid(new Vector2Int(mapcoord.x, mapcoord.y + 1)))
                     {
                         mapcoord.x += 1;
                         position = position + (Vector3.right * size);
@@ -104,6 +104,10 @@ public class Flotteur : Robot
         if(Vector3.Distance(this.transform.position, this.position) == 0)
         {
             this.isWalking = false;
+            if (tilemap.checkKill(mapcoord) && !tilemap.checkVoid(mapcoord))
+                Death();
+            if (tilemap.checkWin(mapcoord))
+                Goal();
         }
         else
         {

@@ -14,6 +14,8 @@ public class TileObject : MonoBehaviour
     public bool isWalkable { get; protected set; }
     public bool isKill { get; protected set; }
     public bool isWin { get; protected set; }
+    public bool isFire { get; protected set; }
+    public bool isVoid { get; protected set; }
 
     /// <summary>
     /// Instantiate a new TileObject
@@ -41,6 +43,8 @@ public class TileObject : MonoBehaviour
         this.isWalkable = true;
         this.isKill = false;
         this.isWin = false;
+        this.isFire = false;
+        this.isVoid = false;
     }
 
     /// <summary>
