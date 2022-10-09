@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 557982786618665467}
   - component: {fileID: 241487519981223527}
   - component: {fileID: 4913566528581346048}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RobotFlotteur2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
