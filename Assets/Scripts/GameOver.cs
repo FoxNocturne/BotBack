@@ -7,18 +7,18 @@ using UnityEngine.SceneManagement;
 
 public class GameOver : BotBackManager {
 
-    public TextMeshProUGUI textGameOver;
+    public Image imageGameOver;
     private float _color;
     private bool _activeTransition = false;
     private void Start()
     {
-        this.textGameOver.color = Color.black;
+        this.imageGameOver.color = Color.black;
         StartCoroutine(this.GameOverTime());
     }
 
     private void Update()
     {
-        this.textGameOver.color = new Color(_color, _color, _color, 1);
+        this.imageGameOver.color = new Color(_color, _color, _color, 1);
         if(this._activeTransition == true) {
             this._color += Time.deltaTime;
         }

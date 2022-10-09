@@ -90,7 +90,7 @@ public class PlayerControler : BotBackManager
     public void LevelWin()
     {
         win = true;
-        SceneManager.LoadScene("QuestClear");
+        //SceneManager.LoadScene("QuestClear");
     }
 
     public void BotAction()
