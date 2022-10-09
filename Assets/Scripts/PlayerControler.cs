@@ -7,7 +7,7 @@ public class PlayerControler : BotBackManager
 {
     public GameObject SelectedRobot = null;
     
-    public GameObject[] Robots;
+    public List<Robot> _listRobot;
     public float CellSize = 0.2f;
     public int botnb = 3;
     public int botpassed = 0;
@@ -47,15 +47,14 @@ public class PlayerControler : BotBackManager
     {
         GlobalTimer.Go(60.0f);
     }
-
     public void ChangeBot(InputAction.CallbackContext context)
     {
-        if (!win && context.performed && Robots.Length >= int.Parse(context.control.name) && Robots[int.Parse(context.control.name) - 1] != null)
-        {
-            Debug.Log(context.control.name);
-            if ( SelectedRobot != null )
-                SelectedRobot.GetComponent<Robot>().Select();
-            SelectedRobot = Robots[int.Parse(context.control.name) - 1];
+        if (!win && context.performed
+            && this._listRobot.Count >= int.Parse(context.control.name)
+            && this._listRobot[int.Parse(context.control.name) - 1] != null
+        ) {
+            if (SelectedRobot != null) { SelectedRobot.GetComponent<Robot>().Select(); }
+            SelectedRobot = this._listRobot[int.Parse(context.control.name) - 1].gameObject;
             SelectedRobot.GetComponent<Robot>().Select();
             tool.Show(SelectedRobot.GetComponent<Robot>().visual);
         }
@@ -97,5 +96,9 @@ public class PlayerControler : BotBackManager
         {
             SelectedRobot.GetComponent<Robot>().Stop();
         }
+    }
+
+    public void SetListRobot(List<Robot> listRobot) {
+        this._listRobot = listRobot;
     }
 }

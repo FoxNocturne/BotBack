@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileMapId: 0
   _listSpawnPos:
-  - {x: 3, y: 7}
+  - {x: 4, y: 6}
+  - {x: 4, y: 5}
   _listRobot:
-  - {fileID: 7187324251907529798, guid: 5753fa3dbaa6cfb44917b9b13a543256, type: 3}
+  - {fileID: 534471808, guid: 24ef2dddae9820d4fb8da92c4380fecc, type: 3}
+  - {fileID: 4913566528581346048, guid: bce7840a4b95e96459e41789877d1809, type: 3}
