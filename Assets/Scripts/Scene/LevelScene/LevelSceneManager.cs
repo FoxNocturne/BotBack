@@ -8,8 +8,12 @@ public class LevelSceneManager : MonoBehaviour
     [SerializeField] private TileMapObject tileMapObject;
     [SerializeField] private LevelScript levelScript;
 
+    [Header("GUI")]
+    [SerializeField] private PlayerControler _playerController;
+    [SerializeField] private RobotWrapperCanvas _guiRobot;
+
     public float timeRemaining { get; private set; } = 100;
-    public List<Robot> _listPlayerRobot;
+    public List<Robot> listPlayerRobot { get; private set; }
 
     void Start()
     {
@@ -20,9 +24,15 @@ public class LevelSceneManager : MonoBehaviour
     {
         // Instancier la carte
         this.tileMapObject.InstantiateTileMap(levelScript.intTileMap);
+
+        // Instancier les robots
+        this.listPlayerRobot = new List<Robot>();
         foreach (LevelRobotSpawn spawn in levelScript.listRobotSpawn) {
-            Transform spawnTransform = this.tileMapObject.GetTileAt(spawn.mapPos).transform;
-            GameObject.Instantiate(spawn.robotPrefab.gameObject, spawnTransform.position, spawnTransform.rotation);
+            TileObject spawnTransform = this.tileMapObject.GetTileAt(spawn.mapPos);
+            Robot newRobot = Robot.InstantiateObject(spawn.robotPrefab, spawnTransform);
+            this._guiRobot.AddRobot(newRobot);
+            this.listPlayerRobot.Add(newRobot);
         }
+        this._playerController.SetListRobot(this.listPlayerRobot);
     }
 }
