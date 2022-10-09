@@ -18,21 +18,25 @@ public class Marche : Robot
     public GameObject selectT;
     public GameObject selectF;
     private bool selected = false;
+
     public override void GoUp(float size)
     {
         stat = Stat.up;
         this.size = size;
     }
+
     public override void GoDown(float size)
     {
         stat = Stat.down;
         this.size = size;
     }
+
     public override void GoLeft(float size)
     {
         stat = Stat.left;
         this.size = size;
     }
+
     public override void GoRight(float size)
     {
         stat = Stat.right;
