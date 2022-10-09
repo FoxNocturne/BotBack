@@ -5,10 +5,20 @@ using UnityEngine;
 public class RobotWrapperCanvas : MonoBehaviour
 {
     [SerializeField] private RobotCanvas iconTemplate;
+    private List<RobotCanvas> _listCanvas;
 
-    // Start is called before the first frame update
-    void Start()
+    public RobotCanvas AddRobot(IRobot robot)
     {
-        for (int i = 0; i < 4; i++) RobotCanvas.InstantiateObject(this.iconTemplate.gameObject, this.transform);
+        var newIcon = RobotCanvas.InstantiateObject(this.iconTemplate.gameObject, this.transform, robot);
+        this._listCanvas.Add(newIcon);
+        return newIcon;
+    }
+
+    public void Clear()
+    {
+        foreach (var canvas in this._listCanvas) {
+            Destroy(canvas);
+        }
+        this._listCanvas.Clear();
     }
 }
