@@ -9,10 +9,15 @@ public abstract class Robot : BotBackManager
      public Vector3 position { set; get; }
      public bool isWalking { set; get; }
     public Sprite visual;
-
+    public Rigidbody rb { get; set; }
     public Sprite icon;
     public UnityEvent onDeath = new UnityEvent();
     public UnityEvent onGoal = new UnityEvent();
+
+    private void Awake()
+    {
+        this.rb = this.GetComponent<Rigidbody>();
+    }
 
     /// <summary>
     /// Crée un robot dans la scéne
