@@ -31,4 +31,8 @@ public class TileMapObject : MonoBehaviour
                 tileMap[x, y] = this._tileDictionary.GetById(intTileMap[y, x]);
         return tileMap;
     }
+
+    public TileObject GetTileAt(Vector2Int mapPos) {
+        return this.tileMap[mapPos.x, mapPos.y];
+    }
 }
