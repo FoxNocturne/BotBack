@@ -5,10 +5,11 @@ using UnityEngine.Events;
 
 public abstract class Robot : BotBackManager
 {
-     Vector3 position { set; get; }
-     bool isWalking { set; get; }
+     public Vector3 position { set; get; }
+     public bool isWalking { set; get; }
 
     public UnityEvent onDeath = new UnityEvent();
+    public UnityEvent onGoal = new UnityEvent();
 
     public abstract void GoUp(float size);
     public abstract void GoLeft(float size);
@@ -19,5 +20,13 @@ public abstract class Robot : BotBackManager
     public abstract void Stop();
     public abstract void Select();
 
-    public abstract void Death();
+    public void Death()
+    {
+        this.onDeath.Invoke();
+    }
+    
+    public  void Goal()
+    {
+        this.onGoal.Invoke();
+    }
 }

@@ -496,7 +496,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 28086369}
         m_TargetAssemblyTypeName: PlayerControler, Assembly-CSharp
-        m_MethodName: BotAction
+        m_MethodName: BotEnd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -512,7 +512,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 28086369}
         m_TargetAssemblyTypeName: PlayerControler, Assembly-CSharp
-        m_MethodName: BotStop
+        m_MethodName: BotDeath
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2013,6 +2013,7 @@ MonoBehaviour:
   _goalIconColor: {r: 0.1254902, g: 0.627451, b: 0.2509804, a: 1}
   _deathIcon: {fileID: 21300000, guid: 6413f0d0fc8c1a345803d12240f6bf49, type: 3}
   _deathIconColor: {r: 0.7529412, g: 0, b: 0, a: 1}
+  robot: {fileID: 0}
 --- !u!114 &1381126781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2417,6 +2418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iconTemplate: {fileID: 1381126780}
+  game: {fileID: 28086369}
 --- !u!1 &1547892698
 GameObject:
   m_ObjectHideFlags: 0

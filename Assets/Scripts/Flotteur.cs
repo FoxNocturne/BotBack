@@ -18,8 +18,6 @@ public class Flotteur : Robot
     public GameObject selectT;
     public GameObject selectF;
     private bool selected = false;
-    public Vector3 position { set; get; }
-    public bool isWalking { set; get; }
     public override void GoUp(float size)
     {
         stat = Stat.up;
@@ -98,10 +96,4 @@ public class Flotteur : Robot
         
     }
 
-    public override void Death()
-    {
-        this.onDeath.Invoke();
-    }
-
-   
 }

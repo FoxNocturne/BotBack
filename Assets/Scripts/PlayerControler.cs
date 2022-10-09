@@ -63,11 +63,13 @@ public class PlayerControler : BotBackManager
     public void BotDeath()
     {
         botnb--;
+        SelectedRobot.GetComponent<Robot>().Death();
     }
 
     public void BotEnd()
     {
         botpassed+=1;
+        SelectedRobot.GetComponent<Robot>().Goal();
         Debug.Log("l:" + botpassed.ToString() + "/" + botnb);
         if (botpassed == botnb)
             LevelWin();

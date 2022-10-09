@@ -23,6 +23,7 @@ public class RobotCanvas : MonoBehaviour
         instance.PrintActive();
         instance.robot = robot;
         robot.onDeath.AddListener(() => { instance.PrintDeath(); });
+        robot.onGoal.AddListener(() => { instance.PrintGoal(); });
         instance.gameObject.SetActive(true);
         return instance;
     }
@@ -36,7 +37,7 @@ public class RobotCanvas : MonoBehaviour
     public void PrintDeath()
     {
         this._robotImage.color = this._inactiveColor;
-        this._iconImage.sprite = this._goalIcon;
+        this._iconImage.sprite =  this._deathIcon;
         this._iconImage.color = this._goalIconColor;
         this._iconImage.enabled = true;
     }
@@ -44,7 +45,7 @@ public class RobotCanvas : MonoBehaviour
     public void PrintGoal()
     {
         this._robotImage.color = this._inactiveColor;
-        this._iconImage.sprite = this._deathIcon;
+        this._iconImage.sprite = this._goalIcon;
         this._iconImage.color = this._deathIconColor;
         this._iconImage.enabled = true;
     }
