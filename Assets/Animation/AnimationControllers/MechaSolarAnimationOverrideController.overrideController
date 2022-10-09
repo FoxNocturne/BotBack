@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MechaSolarAnimationOverrideController
+  m_Controller: {fileID: 9100000, guid: b3e5c5056c81bed4d855e80f0efe80f4, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 50f96819d5d20d540b78b5b1f8511b30, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: cef58908473cace46a0e9b04a4e1a250, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 47ea7a2b94cd7864bac61ee3d2840a10, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 045bcb43194e2e34f9ec3a7d6fc2a33e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: fbbf1dc514d9ace4db95adf34c37aadb, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e2b8ba1824023d84da407c6531ccaa2c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: c54e81974fd1a3c4884123a122f30468, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 91a7e546fbe9bf641a4ad83c95ca7ca0, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 43fa4fac40829c747b9aba3a229c0b64, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 95996e79e160a8f4588571779fb882c2, type: 2}
