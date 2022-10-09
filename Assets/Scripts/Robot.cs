@@ -10,11 +10,7 @@ public abstract class Robot : BotBackManager
      public bool isWalking { set; get; }
     
     public Sprite visual;
-<<<<<<< HEAD
     public Rigidbody rb { get; set; }
-    public Sprite icon;
-=======
->>>>>>> 96e247f (Avance)
     public UnityEvent onDeath = new UnityEvent();
     public UnityEvent onGoal = new UnityEvent();
 
