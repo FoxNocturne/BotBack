@@ -77,6 +77,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b1c60dff077af94f9ef3d1393165ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 988f62403a86cf849bc4a31b800c1337, type: 3}
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  onGoal:
+    m_PersistentCalls:
+      m_Calls: []
   stat: 0
   selectT: {fileID: 4913566528329242728}
   selectF: {fileID: 4913566527027274985}
