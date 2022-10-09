@@ -213,9 +213,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc788d5515191645a297c6865d2f305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SelectedRobot: {fileID: 0}
   _listRobot: []
   CellSize: 1
-  botnb: 3
+  botnb: 0
   botpassed: 0
   tool: {fileID: 625688213}
 --- !u!114 &28086370

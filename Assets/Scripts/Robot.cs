@@ -5,15 +5,23 @@ using UnityEngine.Events;
 
 public abstract class Robot : BotBackManager
 {
-     public Vector3 position { set; get; }
-     public bool isWalking { set; get; }
+    public enum Stat { none, up, down, left, right }
+
+    public Vector3 position { get; protected set; }
+    public bool isWalking { get; protected set; }
+    public Stat currentStatus { get; protected set; } = Stat.none;
+    public float tileSize { get; protected set; }
+    public bool isSelected { get; protected set; } = false;
+
     public Vector2Int mapcoord;
     public TileMapObject tilemap;
     public Sprite visual;
-     public PlayerControler game;
+    public PlayerControler game;
     public Rigidbody rb { get; set; }
     public UnityEvent onDeath = new UnityEvent();
     public UnityEvent onGoal = new UnityEvent();
+    public GameObject selectT;
+    public GameObject selectF;
 
     private void Awake()
     {
@@ -37,14 +45,50 @@ public abstract class Robot : BotBackManager
         return instance;
     }
 
-    public abstract void GoUp(float size);
-    public abstract void GoLeft(float size);
-    public abstract void GoRight(float size);
-    public abstract void GoDown(float size);
+    public virtual void GoUp(float size)
+    {
+        this.currentStatus = Stat.up;
+        this.tileSize = size;
+    }
+
+    public virtual void GoDown(float size)
+    {
+        this.currentStatus = Stat.down;
+        this.tileSize = size;
+    }
+
+    public virtual void GoLeft(float size)
+    {
+        this.currentStatus = Stat.left;
+        this.tileSize = size;
+    }
+
+    public virtual void GoRight(float size)
+    {
+        this.currentStatus = Stat.right;
+        this.tileSize = size;
+    }
+
+    public virtual void Stop()
+    {
+        this.currentStatus = Stat.none;
+    }
 
     public abstract void Action();
-    public abstract void Stop();
-    public abstract void Select();
+
+    public virtual void Select()
+    {
+        if (this.isSelected) {
+            this.selectF.SetActive(true);
+            this.selectT.SetActive(false);
+            this.isSelected = false;
+        }
+        else {
+            this.selectF.SetActive(false);
+            this.selectT.SetActive(true);
+            this.isSelected = true;
+        }
+    }
 
     public void Death()
     {
