@@ -95,6 +95,7 @@ public class Flotteur : BotBackManager ,IRobot
         {
             this.isWalking = true;
         }
+
         
     }
 
