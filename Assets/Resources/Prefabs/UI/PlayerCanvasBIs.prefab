@@ -1676,6 +1676,7 @@ MonoBehaviour:
   _goalIconColor: {r: 0.1254902, g: 0.627451, b: 0.2509804, a: 1}
   _deathIcon: {fileID: 21300000, guid: 6413f0d0fc8c1a345803d12240f6bf49, type: 3}
   _deathIconColor: {r: 0.7529412, g: 0, b: 0, a: 1}
+  robot: {fileID: 0}
 --- !u!1 &4525880233653718799
 GameObject:
   m_ObjectHideFlags: 0
@@ -1735,7 +1736,7 @@ GameObject:
   - component: {fileID: 4525880233708388081}
   - component: {fileID: 4525880233708388083}
   m_Layer: 5
-  m_Name: PlayerCanvas
+  m_Name: PlayerCanvasBIs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1923,6 +1924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iconTemplate: {fileID: 4525880233543547490}
+  game: {fileID: 0}
 --- !u!1 &4525880233777405892
 GameObject:
   m_ObjectHideFlags: 0

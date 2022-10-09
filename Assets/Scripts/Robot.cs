@@ -15,6 +15,8 @@ public abstract class Robot : BotBackManager
     public UnityEvent onDeath = new UnityEvent();
     public UnityEvent onGoal = new UnityEvent();
 
+    public TileObject currentTileObject { get; protected set; }
+
     private void Awake()
     {
         this.rb = this.GetComponent<Rigidbody>();
@@ -30,6 +32,7 @@ public abstract class Robot : BotBackManager
     {
         Robot instance = GameObject.Instantiate(robot.gameObject, tile.transform.position, tile.transform.rotation).GetComponent<Robot>();
         instance.position = tile.transform.position;
+        instance.currentTileObject = tile;
         return instance;
     }
 
