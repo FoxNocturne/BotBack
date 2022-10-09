@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Split : Robot
+public class Shoot : Robot
 {
     public enum Stat
     {
@@ -18,6 +18,7 @@ public class Split : Robot
     public GameObject selectF; 
     public Transform pointShoot;
     public LineRenderer lineRenderer;
+    private bool _shootLaser = false;
     private bool selected = false;
     private float size;
     public override void GoUp(float size)
@@ -41,7 +42,7 @@ public class Split : Robot
         this.size = size;
     }
 
-    public override void Action() { }
+    public override void Action() { this._shootLaser = !this._shootLaser; }
     public override void Stop() { stat = Stat.none; }
     public override void Select()
     {
@@ -97,8 +98,36 @@ public class Split : Robot
             this.isWalking = true;
         }
 
-        lineRenderer.SetPosition(0, this.transform.position);
-        lineRenderer.SetPosition(1, this.pointShoot.position);
+
+        Vector3 dir = Vector3.zero;
+
+
+        if(this._shootLaser == true) {
+            switch (this.stat) {
+                case Stat.up:
+                    dir = Vector3.forward;
+                    break;
+                case Stat.down:
+                    dir = Vector3.back;
+                    break;
+                case Stat.left:
+                    dir = Vector3.left;
+                    break;
+                case Stat.right:
+                    dir = Vector3.right;
+                    break;
+            }
+            RaycastHit hit;
+            if(Physics.Raycast(this.transform.position, dir, out hit, 100)) {
+                this.pointShoot.position = hit.point;
+            }
+            else {
+                this.pointShoot.position = this.transform.position + (dir * 100);
+            }
+
+            this.lineRenderer.SetPosition(0, this.transform.position);
+            this.lineRenderer.SetPosition(1, this.pointShoot.position);
+        }
 
     }
     

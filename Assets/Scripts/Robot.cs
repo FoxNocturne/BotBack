@@ -11,9 +11,27 @@ public abstract class Robot : BotBackManager
     public Vector2 mapcoord;
     public TileMapObject tilemap;
     public Sprite visual;
-
+    public Rigidbody rb { get; set; }
     public UnityEvent onDeath = new UnityEvent();
     public UnityEvent onGoal = new UnityEvent();
+
+    private void Awake()
+    {
+        this.rb = this.GetComponent<Rigidbody>();
+    }
+
+    /// <summary>
+    /// Crée un robot dans la scéne
+    /// </summary>
+    /// <param name="robot"></param>
+    /// <param name="tile"></param>
+    /// <returns></returns>
+    public static Robot InstantiateObject(Robot robot, TileObject tile)
+    {
+        Robot instance = GameObject.Instantiate(robot.gameObject, tile.transform.position, tile.transform.rotation).GetComponent<Robot>();
+        instance.position = tile.transform.position;
+        return instance;
+    }
 
     public abstract void GoUp(float size);
     public abstract void GoLeft(float size);
