@@ -6,11 +6,10 @@ public class LevelSceneManager : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
     [SerializeField] private TileMapObject tileMapObject;
+    [SerializeField] private LevelScript levelScript;
 
-    public LevelScript levelScript;
     public float timeRemaining { get; private set; } = 100;
 
-    // Start is called before the first frame update
     void Start()
     {
         this.LoadLevel(this.levelScript);
@@ -19,5 +18,9 @@ public class LevelSceneManager : MonoBehaviour
     public void LoadLevel(LevelScript levelScript)
     {
         this.tileMapObject.InstantiateTileMap(levelScript.intTileMap);
+        foreach (LevelRobotSpawn spawn in levelScript.listRobotSpawn) {
+            Transform spawnTransform = this.tileMapObject.GetTileAt(spawn.mapPos).transform;
+            GameObject.Instantiate(spawn.robotPrefab.gameObject, spawnTransform.position, spawnTransform.rotation);
+        }
     }
 }

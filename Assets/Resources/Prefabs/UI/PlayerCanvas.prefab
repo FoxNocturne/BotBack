@@ -1304,7 +1304,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Stoper()
+  m_Text: Stopper()
 --- !u!114 &4525880233253254596
 MonoBehaviour:
   m_ObjectHideFlags: 0
