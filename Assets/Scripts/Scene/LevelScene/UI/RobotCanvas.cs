@@ -15,13 +15,15 @@ public class RobotCanvas : MonoBehaviour
     [SerializeField] private Sprite _deathIcon;
     [SerializeField] private Color _deathIconColor;
 
-    public IRobot robot;
+    public Robot robot;
 
-    public static RobotCanvas InstantiateObject(GameObject prefab, Transform parent, IRobot robot = null)
+    public static RobotCanvas InstantiateObject(GameObject prefab, Transform parent, Robot robot = null)
     {
         RobotCanvas instance = GameObject.Instantiate(prefab, parent).GetComponent<RobotCanvas>();
         instance.PrintActive();
         instance.robot = robot;
+        robot.onDeath.AddListener(() => { instance.PrintDeath(); });
+        robot.onGoal.AddListener(() => { instance.PrintGoal(); });
         instance.gameObject.SetActive(true);
         return instance;
     }
@@ -35,7 +37,7 @@ public class RobotCanvas : MonoBehaviour
     public void PrintDeath()
     {
         this._robotImage.color = this._inactiveColor;
-        this._iconImage.sprite = this._goalIcon;
+        this._iconImage.sprite =  this._deathIcon;
         this._iconImage.color = this._goalIconColor;
         this._iconImage.enabled = true;
     }
@@ -43,7 +45,7 @@ public class RobotCanvas : MonoBehaviour
     public void PrintGoal()
     {
         this._robotImage.color = this._inactiveColor;
-        this._iconImage.sprite = this._deathIcon;
+        this._iconImage.sprite = this._goalIcon;
         this._iconImage.color = this._deathIconColor;
         this._iconImage.enabled = true;
     }

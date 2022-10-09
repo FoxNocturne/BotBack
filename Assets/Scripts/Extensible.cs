@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Extensible : BotBackManager, IRobot
+public class Extensible : Robot
 {
     public enum Stat
     {
@@ -15,30 +15,47 @@ public class Extensible : BotBackManager, IRobot
 
     public Stat stat;
     private float size;
-    public Vector3 position { set; get; }
-    public bool isWalking { set; get; }
-    public void GoUp(float size)
+    public GameObject selectT;
+    public GameObject selectF;
+    private bool selected = false;
+    public override void GoUp(float size)
     {
         stat = Stat.up;
         this.size = size;
     }
-    public void GoDown(float size)
+    public override void GoDown(float size)
     {
         stat = Stat.down;
         this.size = size;
     }
-    public void GoLeft(float size)
+    public override void GoLeft(float size)
     {
         stat = Stat.left;
         this.size = size;
     }
-    public void GoRight(float size)
+    public override void GoRight(float size)
     {
         stat = Stat.right;
         this.size = size;
     }
 
-    public void Action() { }
+    public override void Action() { }
+    public override void Stop() { stat = Stat.none; }
+    public override void Select()
+    {
+        if (selected)
+        {
+            selectF.SetActive(true);
+            selectT.SetActive(false);
+            selected = false;
+        }
+        else
+        {
+            selectF.SetActive(false);
+            selectT.SetActive(true);
+            selected = true;
+        }
+    }
 
     void Start()
     {
@@ -63,6 +80,8 @@ public class Extensible : BotBackManager, IRobot
                 case Stat.right:
                     position = position + (Vector3.right * size);
                     break;
+                case Stat.none:
+                    break;
             }
         }
         if (this.isWalking == true)
@@ -80,5 +99,6 @@ public class Extensible : BotBackManager, IRobot
 
     }
 
+    
 
 }

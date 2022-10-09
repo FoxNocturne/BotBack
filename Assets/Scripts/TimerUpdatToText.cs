@@ -5,15 +5,16 @@ using UnityEngine.UI;
 
 public class TimerUpdatToText : BotBackManager
 {
-    private Text txt;  
+    private BatterySlider sl;  
     // Update is called once per frame
     void Update()
     {
-        txt.text = Mathf.Floor(GlobalTimer.GetTimer()).ToString();
+        sl.SetValue(GlobalTimer.GetTimerPcInv());
     }
 
     void Start()
     {
-        txt = this.GetComponent<Text>();
+        sl = this.GetComponent<BatterySlider>();
+        sl.SetMaxValue(100f);
     }
 }

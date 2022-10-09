@@ -11,59 +11,65 @@ public class PlayerControler : BotBackManager
     public float CellSize = 0.2f;
     public int botnb = 3;
     public int botpassed = 0;
+    private bool win = false;
 
     public void GoForward()
     {
-        if (SelectedRobot != null)
+        if (!win && SelectedRobot != null)
         {
-            SelectedRobot.GetComponent<IRobot>().GoUp(CellSize);
+            SelectedRobot.GetComponent<Robot>().GoUp(CellSize);
         }
     }
     public void GoBackward()
     {
-        if (SelectedRobot != null)
+        if (!win && SelectedRobot != null)
         {
-            SelectedRobot.GetComponent<IRobot>().GoDown(CellSize);
+            SelectedRobot.GetComponent<Robot>().GoDown(CellSize);
         }
     }
     public void GoLeft()
     {
-        if (SelectedRobot != null)
+        if (!win && SelectedRobot != null)
         {
-            SelectedRobot.GetComponent<IRobot>().GoLeft(CellSize);
+            SelectedRobot.GetComponent<Robot>().GoLeft(CellSize);
         }
     }
     public void GoRight()
     {
-        if (SelectedRobot != null)
+        if (!win && SelectedRobot != null)
         {
-            SelectedRobot.GetComponent<IRobot>().GoRight(CellSize);
+            SelectedRobot.GetComponent<Robot>().GoRight(CellSize);
         }
     }
 
-    void FixedUpdate()
+    public void Start()
     {
-       // if ( SelectedRobot )
-        //    SelectedRobot.position = Vector3.MoveTowards(SelectedRobot.position, pos, Time.deltaTime * speed);   
+        GlobalTimer.Go(60.0f);
     }
+    
 
     public void ChangeBot(InputAction.CallbackContext context)
     {
-        if (context.performed && Robots.Length >= int.Parse(context.control.name) && Robots[int.Parse(context.control.name) - 1] != null)
+        if (!win && context.performed && Robots.Length >= int.Parse(context.control.name) && Robots[int.Parse(context.control.name) - 1] != null)
         {
             Debug.Log(context.control.name);
+            if ( SelectedRobot != null )
+                SelectedRobot.GetComponent<Robot>().Select();
             SelectedRobot = Robots[int.Parse(context.control.name) - 1];
+            SelectedRobot.GetComponent<Robot>().Select();
         }
     }
 
     public void BotDeath()
     {
         botnb--;
+        SelectedRobot.GetComponent<Robot>().Death();
     }
 
     public void BotEnd()
     {
         botpassed+=1;
+        SelectedRobot.GetComponent<Robot>().Goal();
         Debug.Log("l:" + botpassed.ToString() + "/" + botnb);
         if (botpassed == botnb)
             LevelWin();
@@ -71,15 +77,24 @@ public class PlayerControler : BotBackManager
 
     public void LevelWin()
     {
+        win = true;
         Debug.Log("You Win");
     }
 
     public void BotAction()
     {
-        if (SelectedRobot != null)
+        if (!win && SelectedRobot != null)
         {
-            SelectedRobot.GetComponent<IRobot>().Action();
+            SelectedRobot.GetComponent<Robot>().Action();
             Debug.Log("Action");
+        }
+    }
+
+    public void BotStop()
+    {
+        if ( !win && SelectedRobot != null )
+        {
+            SelectedRobot.GetComponent<Robot>().Stop();
         }
     }
 }

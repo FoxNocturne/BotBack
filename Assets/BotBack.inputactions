@@ -130,13 +130,22 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "StopBot",
+                    "type": "Button",
+                    "id": "e0444f9b-ee2a-4f78-b717-359096670e2d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "fa1e44df-4418-4261-b348-cc961af94bd0",
-                    "path": "<Keyboard>/w",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -147,7 +156,7 @@
                 {
                     "name": "",
                     "id": "f3c3e83f-e458-4126-ba86-553d29de8611",
-                    "path": "<Keyboard>/s",
+                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -158,7 +167,7 @@
                 {
                     "name": "",
                     "id": "66462e31-36a9-4704-be5a-ee559c5d3e19",
-                    "path": "<Keyboard>/a",
+                    "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -169,7 +178,7 @@
                 {
                     "name": "",
                     "id": "de38cae9-b37e-4705-bb41-e94df882b87f",
-                    "path": "<Keyboard>/d",
+                    "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -279,11 +288,22 @@
                 {
                     "name": "",
                     "id": "4a92ded3-a153-499b-b8f2-9aa2685ba89e",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "BotAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "34a1ff08-9fb1-45e6-b89b-5d804a483b75",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "BotAction",
+                    "action": "StopBot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
