@@ -9,7 +9,7 @@ public class PlayerControler : BotBackManager
     
     public List<Robot> _listRobot;
     public float CellSize = 0.2f;
-    public int botnb = 3;
+    public int botnb = 0;
     public int botpassed = 0;
     public ControlWrapperCanvas tool;
     private bool win = false;
@@ -60,16 +60,19 @@ public class PlayerControler : BotBackManager
         }
     }
 
+    public void BotAdd()
+    {
+        botnb++;
+    }
+
     public void BotDeath()
     {
         botnb--;
-        SelectedRobot.GetComponent<Robot>().Death();
     }
 
     public void BotEnd()
     {
         botpassed+=1;
-        SelectedRobot.GetComponent<Robot>().Goal();
         Debug.Log("l:" + botpassed.ToString() + "/" + botnb);
         if (botpassed == botnb)
             LevelWin();

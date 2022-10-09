@@ -41,4 +41,14 @@ public class TileMapObject : MonoBehaviour
     {
         return (GetTileAt(coord).isWalkable);
     }
+
+    public bool checkKill(Vector2Int coord)
+    {
+        return (GetTileAt(coord).isKill);
+    }
+
+    public bool checkWin(Vector2Int coord)
+    {
+        return (GetTileAt(coord).isWin);
+    }
 }

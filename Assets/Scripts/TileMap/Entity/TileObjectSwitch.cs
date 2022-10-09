@@ -10,5 +10,7 @@ public class TileObjectSwitch : TileObject
     protected override void Setup()
     {
         this.isWalkable = true;
+        this.isKill = false;
+        this.isWin = false;
     }
 }

@@ -9,5 +9,7 @@ public class TileObjectEmpty : TileObject
     protected override void Setup()
     {
         this.isWalkable = false;
+        this.isKill = false;
+        this.isWin = false;
     }
 }

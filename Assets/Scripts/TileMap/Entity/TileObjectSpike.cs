@@ -11,5 +11,7 @@ public class TileObjectSpike : TileObject
     protected override void Setup()
     {
         this.isWalkable = true;
+        this.isKill = true;
+        this.isWin = false;
     }
 }

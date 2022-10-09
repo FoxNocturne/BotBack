@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class TileObjectEnd : TileObject 
 {
-    public PlayerControler game;
+   // public PlayerControler game;
     /// <summary>
     /// Setup tile's specific variables
     /// </summary>
     protected override void Setup()
     {
         this.isWalkable = true;
+        this.isKill = false;
+        this.isWin = true;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
+    //private void OnTriggerEnter(Collider other)
+   // {
  
-        Destroy(other.transform.gameObject);
-        game.BotEnd();
-    }
+   //     Destroy(other.transform.gameObject);
+     //   game.BotEnd();
+  //  }
 }

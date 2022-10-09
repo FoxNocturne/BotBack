@@ -12,6 +12,8 @@ public class TileObject : MonoBehaviour
     public Vector2Int tileMapPos { get; protected set; }
     public Vector2 tileScale { get; protected set; } = Vector3.one;
     public bool isWalkable { get; protected set; }
+    public bool isKill { get; protected set; }
+    public bool isWin { get; protected set; }
 
     /// <summary>
     /// Instantiate a new TileObject
@@ -37,6 +39,8 @@ public class TileObject : MonoBehaviour
     protected virtual void Setup()
     {
         this.isWalkable = true;
+        this.isKill = false;
+        this.isWin = false;
     }
 
     /// <summary>

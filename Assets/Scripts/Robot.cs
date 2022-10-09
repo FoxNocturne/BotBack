@@ -11,6 +11,7 @@ public abstract class Robot : BotBackManager
     public Vector2Int mapcoord;
     public TileMapObject tilemap;
     public Sprite visual;
+     public PlayerControler game;
     public Rigidbody rb { get; set; }
     public UnityEvent onDeath = new UnityEvent();
     public UnityEvent onGoal = new UnityEvent();
@@ -26,12 +27,14 @@ public abstract class Robot : BotBackManager
     /// <param name="robot"></param>
     /// <param name="tile"></param>
     /// <returns></returns>
-    public static Robot InstantiateObject(Robot robot, TileObject tile)
+    public static Robot InstantiateObject(Robot robot, TileObject tile, PlayerControler game)
     {
         Robot instance = GameObject.Instantiate(robot.gameObject, tile.transform.position, tile.transform.rotation).GetComponent<Robot>();
         instance.position = tile.transform.position;
         instance.mapcoord = tile.tileMapPos;
         instance.tilemap = tile.tileMapObject;
+        instance.game = game;
+        game.BotAdd();
         return instance;
     }
 
@@ -46,11 +49,15 @@ public abstract class Robot : BotBackManager
 
     public void Death()
     {
+        Destroy(this.gameObject);
+        game.BotDeath();
         this.onDeath.Invoke();
     }
     
     public  void Goal()
     {
+        Destroy(this.gameObject);
+        game.BotEnd();
         this.onGoal.Invoke();
     }
 }

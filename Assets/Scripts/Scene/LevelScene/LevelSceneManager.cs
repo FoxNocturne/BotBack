@@ -29,7 +29,7 @@ public class LevelSceneManager : MonoBehaviour
         this.listPlayerRobot = new List<Robot>();
         foreach (LevelRobotSpawn spawn in levelScript.listRobotSpawn) {
             TileObject spawnTransform = this.tileMapObject.GetTileAt(spawn.mapPos);
-            Robot newRobot = Robot.InstantiateObject(spawn.robotPrefab, spawnTransform);
+            Robot newRobot = Robot.InstantiateObject(spawn.robotPrefab, spawnTransform, _playerController);
             this._guiRobot.AddRobot(newRobot);
             this.listPlayerRobot.Add(newRobot);
         }
