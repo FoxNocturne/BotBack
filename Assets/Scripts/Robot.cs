@@ -5,11 +5,18 @@ using UnityEngine.Events;
 
 public abstract class Robot : BotBackManager
 {
+    [Header("Components")]
+    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private Animator _animator;
+
     [Header("Robot properties")]
     public Sprite visual;
     public float robotSpeed = 2f;
-    public GameObject selectT;
-    public GameObject selectF;
+
+    [Header("Robot Sprites")]
+    public Sprite forwardSprite;
+    public Sprite backwarkSprite;
+    public Sprite sideSprite;
 
     public enum Stat { none, up, down, left, right }
     public Vector3 position { get; protected set; }
@@ -23,10 +30,12 @@ public abstract class Robot : BotBackManager
     public Rigidbody rb { get; set; }
     public UnityEvent onDeath { get; protected set; } = new UnityEvent();
     public UnityEvent onGoal { get; protected set; } = new UnityEvent();
+    public RobotMarkerObject markerObject { get; protected set; }
 
     private void Awake()
     {
         this.rb = this.GetComponent<Rigidbody>();
+        this.markerObject = this.GetComponentInChildren<RobotMarkerObject>();
     }
 
     /// <summary>
@@ -42,32 +51,45 @@ public abstract class Robot : BotBackManager
         instance.mapcoord = tile.tileMapPos;
         instance.tilemap = tile.tileMapObject;
         instance.game = game;
+        instance.markerObject = instance.GetComponentInChildren<RobotMarkerObject>();
         game.BotAdd();
         return instance;
     }
 
     public virtual void GoUp(float size)
     {
-        this.currentStatus = Stat.up;
-        this.tileSize = size;
+        if (this.currentStatus != Stat.up) {
+            this.currentStatus = Stat.up;
+            this.tileSize = size;
+            this._animator.SetTrigger("onDirChange");
+        }
     }
 
     public virtual void GoDown(float size)
     {
-        this.currentStatus = Stat.down;
-        this.tileSize = size;
+        if (this.currentStatus != Stat.down) {
+            this.currentStatus = Stat.down;
+            this.tileSize = size;
+            this._animator.SetTrigger("onDirChange");
+        }
     }
 
     public virtual void GoLeft(float size)
     {
-        this.currentStatus = Stat.left;
-        this.tileSize = size;
+        if (this.currentStatus != Stat.left) {
+            this.currentStatus = Stat.left;
+            this.tileSize = size;
+            this._animator.SetTrigger("onDirChange");
+        }
     }
 
     public virtual void GoRight(float size)
     {
-        this.currentStatus = Stat.right;
-        this.tileSize = size;
+        if (this.currentStatus != Stat.right) {
+            this.currentStatus = Stat.right;
+            this.tileSize = size;
+            this._animator.SetTrigger("onDirChange");
+        }
     }
 
     public virtual void Stop()
@@ -80,47 +102,47 @@ public abstract class Robot : BotBackManager
         if (this.isWalking == false) {
             switch (this.currentStatus) {
                 case Stat.up:
-                    if (tilemap == null || tilemap.checkgo(new Vector2Int(mapcoord.x, mapcoord.y + 1)))
+                    if (tilemap == null || this.CanGoOnTile(this.tilemap.GetTileAt(new Vector2Int(mapcoord.x, mapcoord.y + 1))))
                     {
                         mapcoord.y += 1;
                         position = position + (Vector3.forward * this.tileSize);
                     }
                     else
                     {
-                        this.currentStatus = Stat.down;
+                        this.GoDown(this.tileSize);
                     }
                     break;
                 case Stat.down:
-                    if (tilemap == null || tilemap.checkgo(new Vector2Int(mapcoord.x, mapcoord.y - 1)))
+                    if (tilemap == null || this.CanGoOnTile(this.tilemap.GetTileAt(new Vector2Int(mapcoord.x, mapcoord.y - 1))))
                     {
                         mapcoord.y -= 1;
                         position = position + (Vector3.back * this.tileSize);
                     }
                     else
                     {
-                        this.currentStatus = Stat.up;
+                        this.GoUp(this.tileSize);
                     }
                     break;
                 case Stat.left:
-                    if (tilemap == null || tilemap.checkgo(new Vector2Int(mapcoord.x - 1, mapcoord.y)))
+                    if (tilemap == null || this.CanGoOnTile(this.tilemap.GetTileAt(new Vector2Int(mapcoord.x - 1, mapcoord.y))))
                     {
                         mapcoord.x -= 1;
                         position = position + (Vector3.left * this.tileSize);
                     }
                     else
                     {
-                        this.currentStatus = Stat.right;
+                        this.GoRight(this.tileSize);
                     }
                     break;
                 case Stat.right:
-                    if (tilemap == null || tilemap.checkgo(new Vector2Int(mapcoord.x + 1, mapcoord.y)))
+                    if (tilemap == null || this.CanGoOnTile(this.tilemap.GetTileAt(new Vector2Int(mapcoord.x + 1, mapcoord.y))))
                     {
                         mapcoord.x += 1;
                         position = position + (Vector3.right * this.tileSize);
                     }
                     else
                     {
-                        this.currentStatus = Stat.left;
+                        this.GoLeft(this.tileSize);
                     }
                     break;
             }
@@ -128,23 +150,42 @@ public abstract class Robot : BotBackManager
         if (this.isWalking == true) {
             this.transform.position = Vector3.MoveTowards(this.transform.position, this.position, Time.deltaTime * this.robotSpeed);
         }
-
+        if (Vector3.Distance(this.transform.position, this.position) == 0)
+        {
+            this.isWalking = false;
+            if (tilemap.checkKill(mapcoord) && !tilemap.checkVoid(mapcoord))
+                Death();
+            if (tilemap.checkWin(mapcoord))
+                Goal();
+        }
+        else
+        {
+            this.isWalking = true;
+        }
     }
 
     public abstract void Action();
 
     public virtual void Select()
     {
-        if (this.isSelected) {
-            this.selectF.SetActive(true);
-            this.selectT.SetActive(false);
-            this.isSelected = false;
+        this.isSelected = !this.isSelected;
+        this.markerObject.SetSelected(this.isSelected);
+    }
+
+    /// <summary>
+    /// Triggered by animator to switch sprite when rotating robot
+    /// </summary>
+    public void ChangeSprite()
+    {
+        Sprite newSprite = this.forwardSprite;
+        switch (this.currentStatus) {
+            case Stat.up: newSprite = this.backwarkSprite; break;
+            case Stat.left: newSprite = this.sideSprite; break;
+            case Stat.right: newSprite = this.sideSprite; break;
         }
-        else {
-            this.selectF.SetActive(false);
-            this.selectT.SetActive(true);
-            this.isSelected = true;
-        }
+        this._spriteRenderer.sprite = newSprite;
+        this._spriteRenderer.flipX = this.currentStatus == Stat.left;
+        this._animator.SetBool("onDirChange", false);
     }
 
     public void Death()
@@ -160,4 +201,6 @@ public abstract class Robot : BotBackManager
         game.BotEnd();
         this.onGoal.Invoke();
     }
+
+    protected abstract bool CanGoOnTile(TileObject tile);
 }

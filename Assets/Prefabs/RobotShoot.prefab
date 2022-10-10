@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1785888020}
   - component: {fileID: 757166889}
   - component: {fileID: 757166890}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4723,7 +4723,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8296471720984324061}
   - component: {fileID: 2518583583142808877}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpriteRotate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4770,7 +4770,7 @@ GameObject:
   m_Component:
   - component: {fileID: 86895119576887624}
   - component: {fileID: 1185288139401150132}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: T
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4879,7 +4879,7 @@ Transform:
   - {fileID: 8296471720984324061}
   - {fileID: 1785888020}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &4792624311866843764
 Rigidbody:
@@ -4924,8 +4924,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visual: {fileID: 21300000, guid: 2adf41add5cde124489d701ff90c6435, type: 3}
   robotSpeed: 2
-  selectT: {fileID: 2807205028870787029}
-  selectF: {fileID: 5609291313940176505}
   stat: 0
   pointShoot: {fileID: 1785888020}
   lineRenderer: {fileID: 1897320162}
@@ -5060,7 +5058,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1624033300144303445}
   - component: {fileID: 1905074125063364275}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5144,7 +5142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7260437433592618573}
   - component: {fileID: 4876869586173440336}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5204,8 +5202,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2078166175
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: da4734e354e3dd347b2935c6a22b3ddb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

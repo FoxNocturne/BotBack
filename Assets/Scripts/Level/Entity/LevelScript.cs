@@ -5,6 +5,8 @@ using UnityEngine;
 public class LevelScript : ScriptableObject
 {
     [SerializeField] private int _tileMapId;
+
+    [Header("Robot spawns")]
     [SerializeField] private List<Vector2Int> _listSpawnPos;
     [SerializeField] private List<Robot> _listRobot;
 

@@ -29,7 +29,6 @@ public class TransitionScene : BotBackManager {
     }
 
     public void TransitionMomentTrigger() {
-        Debug.Log("yoo");
         StartCoroutine(TransitionMoment());
     }
 

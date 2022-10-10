@@ -39,6 +39,7 @@ public class LevelSceneManager : MonoBehaviour
             Robot newRobot = Robot.InstantiateObject(spawn.robotPrefab, spawnTransform, _playerController);
             this._guiRobot.AddRobot(newRobot);
             this.listPlayerRobot.Add(newRobot);
+            newRobot.markerObject.SetOrder(this.listPlayerRobot.Count);
         }
         this._playerController.SetListRobot(this.listPlayerRobot);
 

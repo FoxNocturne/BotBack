@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class Extensible : Robot
 {
-    public enum Stat
-    {
-        up,
-        down,
-        left,
-        right,
-        none
-    }
-
     public Stat stat;
     private float size;
     public GameObject selectT;
@@ -113,6 +104,8 @@ public class Extensible : Robot
 
     }
 
-    
-
+    protected override bool CanGoOnTile(TileObject tile)
+    {
+        return tile.isWalkable;
+    }
 }

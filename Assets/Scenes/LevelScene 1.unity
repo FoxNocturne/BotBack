@@ -703,7 +703,7 @@ PrefabInstance:
     - target: {fileID: 1601693967802005805, guid: b1b6a4a4712a0364bbffc21e45491ba2,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2333152634366561086, guid: b1b6a4a4712a0364bbffc21e45491ba2,
         type: 3}
@@ -1113,7 +1113,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1428360042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1386,7 +1386,7 @@ PrefabInstance:
     - target: {fileID: 4525880233708388085, guid: ac23be3c8a02fb545b35e0d68249086d,
         type: 3}
       propertyPath: m_Name
-      value: PlayerCanvasBIs
+      value: PlayerCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 4525880233777405889, guid: ac23be3c8a02fb545b35e0d68249086d,
         type: 3}
