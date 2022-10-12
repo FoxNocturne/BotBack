@@ -4768,7 +4768,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4792624311866843767}
-  - component: {fileID: 4792624311866843764}
+  - component: {fileID: 98346140852642584}
   - component: {fileID: 4792624311866843763}
   - component: {fileID: 1897320162}
   - component: {fileID: 9157178899024251682}
@@ -4797,7 +4797,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &4792624311866843764
+--- !u!54 &98346140852642584
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4824,7 +4824,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.86, y: 0.7, z: 0.20000005}
+  m_Size: {x: 0.86, y: 0.7, z: 0.6}
   m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!120 &1897320162
 LineRenderer:

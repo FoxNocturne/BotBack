@@ -15,7 +15,7 @@
 		{ "tileRow": [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ] }
 	],
 	"listRobotSpawn": [
-		{ "robotId": 1, "x": 3, "y": 6 }
+		{ "id": 1, "x": 3, "y": 6 }
 	],
 	"listEnemySpawn": []
 }
