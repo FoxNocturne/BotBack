@@ -16,10 +16,14 @@ public class LevelSceneManager : MonoBehaviour
 
     public float timeRemaining { get; private set; } = 100;
     public List<Robot> listPlayerRobot { get; private set; }
+    private LevelSerializableRepository _levelRepository;
+    private RobotRepository _robotRepository;
 
     void Start()
     {
-        this.LoadLevel(this._levelDictionary.GetById(0));
+        this._levelRepository = new LevelSerializableRepository();
+        this._robotRepository = new RobotRepository();
+        this.LoadLevel(this._levelRepository.GetById(GameManager.currentLevelId));
     }
 
     void Update()
@@ -27,16 +31,16 @@ public class LevelSceneManager : MonoBehaviour
         this._guiBattery.SetValue(BotBackManager.GlobalTimer.GetTimerPcInv());
     }
 
-    public void LoadLevel(LevelScript levelScript)
+    public void LoadLevel(LevelSerializable level)
     {
         // Instancier la carte
-        this.tileMapObject.InstantiateTileMap(levelScript.intTileMap);
+        this.tileMapObject.InstantiateTileMap(level.GetIntTileMap());
 
         // Instancier les robots
         this.listPlayerRobot = new List<Robot>();
-        foreach (LevelRobotSpawn spawn in levelScript.listRobotSpawn) {
-            TileObject spawnTransform = this.tileMapObject.GetTileAt(spawn.mapPos);
-            Robot newRobot = Robot.InstantiateObject(spawn.robotPrefab, spawnTransform, _playerController);
+        foreach (var spawn in level.listRobotSpawn) {
+            TileObject spawnTransform = this.tileMapObject.tileMap[spawn.x, spawn.y];
+            Robot newRobot = Robot.InstantiateObject(this._robotRepository.GetById(spawn.robotId), spawnTransform, _playerController);
             this._guiRobot.AddRobot(newRobot);
             this.listPlayerRobot.Add(newRobot);
             newRobot.markerObject.SetOrder(this.listPlayerRobot.Count);

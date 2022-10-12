@@ -44,9 +44,9 @@ public abstract class Robot : BotBackManager
     /// <param name="robot"></param>
     /// <param name="tile"></param>
     /// <returns></returns>
-    public static Robot InstantiateObject(Robot robot, TileObject tile, PlayerControler game)
+    public static Robot InstantiateObject(GameObject prefab, TileObject tile, PlayerControler game)
     {
-        Robot instance = GameObject.Instantiate(robot.gameObject, tile.transform.position, tile.transform.rotation).GetComponent<Robot>();
+        Robot instance = GameObject.Instantiate(prefab.gameObject, tile.transform.position, tile.transform.rotation).GetComponent<Robot>();
         instance.position = tile.transform.position;
         instance.mapcoord = tile.tileMapPos;
         instance.tilemap = tile.tileMapObject;

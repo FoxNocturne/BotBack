@@ -7,6 +7,7 @@ public class Menu : BotBackManager {
 
     public GameObject layoutPlayExit;
     public GameObject layoutLevel;
+
     public void PlayGame() {
         this.layoutPlayExit.SetActive(false);
         this.layoutLevel.SetActive(true);
@@ -24,5 +25,10 @@ public class Menu : BotBackManager {
     public void Level2()
     {
         SceneManager.LoadScene("Level");
+    }
+
+    public void GoToGalerie()
+    {
+        SceneManager.LoadScene("GaleryScene");
     }
 }
