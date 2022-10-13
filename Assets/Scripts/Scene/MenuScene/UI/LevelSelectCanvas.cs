@@ -25,6 +25,6 @@ public class LevelSelectCanvas : MonoBehaviour
     private void GoToLevel(int levelId)
     {
         GameManager.currentLevelId = levelId;
-        SceneManager.LoadScene("LevelScene 1");
+        SceneManager.LoadScene("LevelScene");
     }
 }

@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/GameOver.unity
     guid: 6f1aa2ea54bd9b740b930d9c5664a28e
   - enabled: 1
-    path: Assets/Scenes/LevelScene 1.unity
+    path: Assets/Scenes/LevelScene.unity
     guid: 21fe2b018f825024fb2b7f110e1f1915
   - enabled: 1
     path: Assets/Scenes/QuestClear.unity

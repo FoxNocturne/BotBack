@@ -22,12 +22,12 @@ public  class Timer
 
     public int GetTimerPc()
     {
-        return (Mathf.FloorToInt((100f * GetTimer()) / duration));
+        return (Mathf.FloorToInt((180f * GetTimer()) / duration));
     }
 
     public int GetTimerPcInv()
     {
-        return ( 100 - GetTimerPc() );
+        return ( 180 - GetTimerPc() );
     }
 
     public bool TimerFinish()

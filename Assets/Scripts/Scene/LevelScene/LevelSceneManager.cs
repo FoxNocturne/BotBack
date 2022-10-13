@@ -1,6 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelSceneManager : MonoBehaviour
 {
@@ -13,26 +13,26 @@ public class LevelSceneManager : MonoBehaviour
     [SerializeField] private BatterySlider _guiBattery;
     [SerializeField] private RobotWrapperCanvas _guiRobot;
 
-
-    public float timeRemaining { get; private set; } = 180;
     public List<Robot> listPlayerRobot { get; private set; }
     public List<EnemyObject> listEnemy { get; private set; }
+    public LevelTimer levelTimer { get; private set; }
 
     private LevelSerializableRepository _levelRepository;
     private RobotRepository _robotRepository;
     private EnemyRepository _enemyRepository;
+    private int _nbRobotDeath;
+    private int _nbRobotGoal;
+    private float _maxTime = 180f;
 
     void Start()
     {
         this._levelRepository = new LevelSerializableRepository();
         this._robotRepository = new RobotRepository();
         this._enemyRepository = new EnemyRepository();
+        this._nbRobotDeath = 0;
+        this._nbRobotGoal = 0;
+        this.levelTimer = new LevelTimer(this._maxTime);
         this.LoadLevel(this._levelRepository.GetById(GameManager.currentLevelId));
-    }
-
-    void Update()
-    {
-        this._guiBattery.SetValue(BotBackManager.GlobalTimer.GetTimerPcInv());
     }
 
     public void LoadLevel(LevelSerializable level)
@@ -45,6 +45,8 @@ public class LevelSceneManager : MonoBehaviour
         foreach (var spawn in level.listRobotSpawn) {
             TileObject spawnTransform = this.tileMapObject.tileMap[spawn.x, spawn.y];
             Robot newRobot = Robot.InstantiateObject(this._robotRepository.GetById(spawn.id), spawnTransform, this._playerController);
+            newRobot.onDeath.AddListener(() => { this.OnRobotDeath(newRobot); });
+            newRobot.onGoal.AddListener(() => { this.OnRobotGoal(newRobot); });
             this._guiRobot.AddRobot(newRobot);
             this.listPlayerRobot.Add(newRobot);
             newRobot.markerObject.SetOrder(this.listPlayerRobot.Count);
@@ -61,6 +63,45 @@ public class LevelSceneManager : MonoBehaviour
         }
 
         // Initialiser la UI
-        this._guiBattery.SetMaxValue(this.timeRemaining);
+        this._guiBattery.SetMaxValue(this.levelTimer.remainingTime);
+        this.levelTimer.onTimeChanged.AddListener(time => this._guiBattery.SetValue(time));
+        this.levelTimer.onTimerEnd.AddListener(() => this.OnTimerEnd());
+        StartCoroutine(this.levelTimer.RunTimer());
+    }
+
+    private void OnRobotGoal(Robot robot)
+    {
+        this._nbRobotGoal++;
+        if (this._nbRobotGoal + this._nbRobotDeath == this.listPlayerRobot.Count) {
+            this.FinishLevel();
+        }
+    }
+
+    private void OnRobotDeath(Robot robot)
+    {
+        this._nbRobotDeath++;
+        if (this._nbRobotGoal + this._nbRobotDeath == this.listPlayerRobot.Count) {
+            this.FinishLevel();
+        }
+    }
+
+    private void FinishLevel()
+    {
+        this.levelTimer.Pause();
+        if (this._nbRobotGoal > 0) {
+            LevelScoreComputer computer = new LevelScoreComputer();
+            computer.nbRobot = this.listPlayerRobot.Count;
+            computer.nbRobotSaved = this._nbRobotGoal;
+            computer.timeMax = this._maxTime;
+            computer.timeRemaining = this.levelTimer.remainingTime;
+            computer.hasStopped = this._playerController.hasStopped;
+            QuestClearSceneManager.LoadScene(computer);
+        }
+        else { SceneManager.LoadScene("GameOver"); }
+    }
+
+    private void OnTimerEnd()
+    {
+        SceneManager.LoadScene("GameOver");
     }
 }

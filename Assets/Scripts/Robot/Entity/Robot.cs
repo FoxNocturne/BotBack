@@ -190,16 +190,14 @@ public abstract class Robot : BotBackManager
 
     public void Death()
     {
-        game.BotDeath();
         this.onDeath.Invoke();
         Destroy(this.gameObject);
     }
     
     public  void Goal()
     {
-        Destroy(this.gameObject);
-        game.BotEnd();
         this.onGoal.Invoke();
+        Destroy(this.gameObject);
     }
 
     protected abstract bool CanGoOnTile(TileObject tile);

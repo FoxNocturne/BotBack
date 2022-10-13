@@ -17,7 +17,6 @@ public class BatterySlider : MonoBehaviour
     [SerializeField] private Gradient _colorGradient;
     [SerializeField] private Image _fillerImage;
 
-    public Timer timer { get; protected set; }
     private bool isLowBatteryAnimated = false;
 
     void Awake()
