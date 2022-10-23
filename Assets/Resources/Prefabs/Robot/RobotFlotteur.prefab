@@ -102,6 +102,7 @@ MonoBehaviour:
   _animator: {fileID: 302348620450135824}
   visual: {fileID: 21300000, guid: 988f62403a86cf849bc4a31b800c1337, type: 3}
   robotSpeed: 2
+  canPressButton: 0
   forwardSprite: {fileID: 21300000, guid: 988f62403a86cf849bc4a31b800c1337, type: 3}
   backwarkSprite: {fileID: 21300000, guid: 986a5da6ff954fb4fac9a947ac10bc5f, type: 3}
   sideSprite: {fileID: 21300000, guid: f4d299a4542dec549becbf37f0820b13, type: 3}

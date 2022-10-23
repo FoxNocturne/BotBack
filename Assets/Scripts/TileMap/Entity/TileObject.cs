@@ -17,6 +17,8 @@ public class TileObject : MonoBehaviour
     public bool isWin { get; protected set; }
     public bool isFire { get; protected set; }
     public bool isVoid { get; protected set; }
+    public bool isGadgetAllowed { get; protected set; }
+    public GadgetObject gadgetOnTile { get; set; }
 
     /// <summary>
     /// Instantiate a new TileObject
@@ -35,7 +37,7 @@ public class TileObject : MonoBehaviour
         instance.Setup();
         return instance;
     }
-    
+
     /// <summary>
     /// Setup tile's specific variables
     /// </summary>
@@ -47,6 +49,7 @@ public class TileObject : MonoBehaviour
         this.isWin = false;
         this.isFire = false;
         this.isVoid = false;
+        this.isGadgetAllowed = true;
     }
 
     /// <summary>
@@ -67,4 +70,7 @@ public class TileObject : MonoBehaviour
         this.texture.Apply();
     }
 
+    public bool canReceiveGadget {
+        get { return this.isGadgetAllowed && this.gadgetOnTile == null; }
+    }
 }

@@ -6,7 +6,6 @@ public class LevelSceneManager : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
     [SerializeField] private TileMapObject tileMapObject;
-    [SerializeField] private LevelDictionary _levelDictionary;
 
     [Header("GUI")]
     [SerializeField] private PlayerControler _playerController;
@@ -15,11 +14,13 @@ public class LevelSceneManager : MonoBehaviour
 
     public List<Robot> listPlayerRobot { get; private set; }
     public List<EnemyObject> listEnemy { get; private set; }
+    public List<GadgetObject> listGadget { get; private set; }
     public LevelTimer levelTimer { get; private set; }
 
     private LevelSerializableRepository _levelRepository;
     private RobotRepository _robotRepository;
     private EnemyRepository _enemyRepository;
+    private GadgetRepository _gadgetRepository;
     private int _nbRobotDeath;
     private int _nbRobotGoal;
     private float _maxTime = 180f;
@@ -29,22 +30,24 @@ public class LevelSceneManager : MonoBehaviour
         this._levelRepository = new LevelSerializableRepository();
         this._robotRepository = new RobotRepository();
         this._enemyRepository = new EnemyRepository();
+        this._gadgetRepository = new GadgetRepository();
         this._nbRobotDeath = 0;
         this._nbRobotGoal = 0;
         this.levelTimer = new LevelTimer(this._maxTime);
-        this.LoadLevel(this._levelRepository.GetById(GameManager.currentLevelId));
+        // this.LoadLevel(this._levelRepository.GetById(GameManager.currentLevelId));
+        this.LoadLevel(this._levelRepository.GetById(4));
     }
 
     public void LoadLevel(LevelSerializable level)
     {
-        // Instancier la carte
+        // Instantiate map
         this.tileMapObject.InstantiateTileMap(level.GetIntTileMap());
 
-        // Instancier les robots
+        // Instantiate robots
         this.listPlayerRobot = new List<Robot>();
         foreach (var spawn in level.listRobotSpawn) {
             TileObject spawnTransform = this.tileMapObject.tileMap[spawn.x, spawn.y];
-            Robot newRobot = Robot.InstantiateObject(this._robotRepository.GetById(spawn.id), spawnTransform, this._playerController);
+            Robot newRobot = Robot.InstantiateObject(this._robotRepository.GetById(spawn.id), spawnTransform);
             newRobot.onDeath.AddListener(() => { this.OnRobotDeath(newRobot); });
             newRobot.onGoal.AddListener(() => { this.OnRobotGoal(newRobot); });
             this._guiRobot.AddRobot(newRobot);
@@ -53,13 +56,21 @@ public class LevelSceneManager : MonoBehaviour
         }
         this._playerController.SetListRobot(this.listPlayerRobot);
 
-        // Instancier les ennemis
+        // Instantiate enemies
         this.listEnemy = new List<EnemyObject>();
         foreach (var spawn in level.listEnemySpawn) {
             TileObject spawnTransform = this.tileMapObject.tileMap[spawn.x, spawn.y];
             EnemyObject newEnemy = EnemyObject.InstantiateObject(this._enemyRepository.GetById(spawn.id), spawnTransform);
             newEnemy.ApplyStrategy(spawn);
             this.listEnemy.Add(newEnemy);
+        }
+
+        // Instantiate gadgets
+        this.listGadget = new List<GadgetObject>();
+        foreach (var spawn in level.listGadgetSpawn) {
+            TileObject spawnTransform = this.tileMapObject.tileMap[spawn.x, spawn.y];
+            GadgetObject newGadget = GadgetObject.InstantiateObject(this._gadgetRepository.GetById(spawn.id), spawnTransform);
+            this.listGadget.Add(newGadget);
         }
 
         // Initialiser la UI

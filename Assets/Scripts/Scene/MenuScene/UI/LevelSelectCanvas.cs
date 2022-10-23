@@ -10,7 +10,7 @@ public class LevelSelectCanvas : MonoBehaviour
 
     void Awake()
     {
-        this.InstantiateButtons(4);
+        this.InstantiateButtons(5);
     }
 
     public List<LevelSelectButton> InstantiateButtons(int nbLevel) {

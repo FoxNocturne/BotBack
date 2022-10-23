@@ -104,6 +104,11 @@ public class Extensible : Robot
 
     }
 
+    public override string GetAbilityName()
+    {
+        return "Agir";
+    }
+
     protected override bool CanGoOnTile(TileObject tile)
     {
         return tile.isWalkable;

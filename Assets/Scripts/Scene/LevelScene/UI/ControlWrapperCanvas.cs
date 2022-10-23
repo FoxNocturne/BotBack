@@ -6,17 +6,20 @@ using UnityEngine.UI;
 public class ControlWrapperCanvas : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
-    public Image robot;
+    [SerializeField] private Image _robotImage;
+    [SerializeField] private Text _robotAbilityText;
 
-    public void Show(Sprite toshow)
+    public void Show(Robot robot)
     {
         this._animator.SetBool("isShown", true);
-        robot.sprite = toshow;
+        this._robotImage.sprite = robot.visual;
+        this._robotAbilityText.text = robot.GetAbilityName() + "()";
     }
 
     public void Hide()
     {
         this._animator.SetBool("isShown", false);
-        robot.sprite = null;
+        this._robotImage.sprite = null;
+        this._robotAbilityText.text = "Agir()";
     }
 }

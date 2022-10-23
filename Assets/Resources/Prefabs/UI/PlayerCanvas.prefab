@@ -608,7 +608,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 4525880232640531057}
-  robot: {fileID: 4525880232764297153}
+  _robotImage: {fileID: 4525880232764297153}
+  _robotAbilityText: {fileID: 4525880232815399353}
 --- !u!1 &4525880232722613507
 GameObject:
   m_ObjectHideFlags: 0
@@ -1919,7 +1920,7 @@ RectTransform:
   - {fileID: 4525880233777405893}
   - {fileID: 4525880232640531061}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

@@ -12,6 +12,7 @@ public abstract class Robot : BotBackManager
     [Header("Robot properties")]
     public Sprite visual;
     public float robotSpeed = 2f;
+    public bool canPressButton = true;
 
     [Header("Robot Sprites")]
     public Sprite forwardSprite;
@@ -26,7 +27,6 @@ public abstract class Robot : BotBackManager
     public bool isSelected { get; protected set; } = false;
     protected Vector2Int mapcoord;
     public TileMapObject tilemap { get; protected set; }
-    public PlayerControler game { get; protected set; }
     public Rigidbody rb { get; set; }
     public UnityEvent onDeath { get; protected set; } = new UnityEvent();
     public UnityEvent onGoal { get; protected set; } = new UnityEvent();
@@ -44,15 +44,13 @@ public abstract class Robot : BotBackManager
     /// <param name="robot"></param>
     /// <param name="tile"></param>
     /// <returns></returns>
-    public static Robot InstantiateObject(GameObject prefab, TileObject tile, PlayerControler game)
+    public static Robot InstantiateObject(GameObject prefab, TileObject tile)
     {
         Robot instance = GameObject.Instantiate(prefab.gameObject, tile.transform.position, tile.transform.rotation).GetComponent<Robot>();
         instance.position = tile.transform.position;
         instance.mapcoord = tile.tileMapPos;
         instance.tilemap = tile.tileMapObject;
-        instance.game = game;
         instance.markerObject = instance.GetComponentInChildren<RobotMarkerObject>();
-        game.BotAdd();
         return instance;
     }
 
@@ -165,6 +163,8 @@ public abstract class Robot : BotBackManager
     }
 
     public abstract void Action();
+
+    public abstract string GetAbilityName();
 
     public virtual void Select()
     {

@@ -38,6 +38,11 @@ public class Shoot : Robot
         this.currentStatus = Stat.none;
     }
 
+    public override string GetAbilityName()
+    {
+        return "Tirer";
+    }
+
     protected override bool CanGoOnTile(TileObject tile)
     {
         return tile.isWalkable;

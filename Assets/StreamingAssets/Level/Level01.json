@@ -17,5 +17,6 @@
 	"listRobotSpawn": [
 		{ "id": 1, "x": 3, "y": 6 }
 	],
-	"listEnemySpawn": []
+	"listEnemySpawn": [],
+	"listGadgetSpawn": []
 }

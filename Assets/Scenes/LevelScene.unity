@@ -158,7 +158,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 1385235076}
   tileMapObject: {fileID: 1351447984}
-  _levelDictionary: {fileID: 11400000, guid: b7dbfbd21337cd94ba89566bdda44553, type: 2}
   _playerController: {fileID: 28086369}
   _guiBattery: {fileID: 1522212612}
   _guiRobot: {fileID: 1477602023}
@@ -218,7 +217,7 @@ MonoBehaviour:
   _listRobot: []
   CellSize: 1
   botpassed: 0
-  tool: {fileID: 625688213}
+  _guiRobotControl: {fileID: 625688213}
 --- !u!114 &28086370
 MonoBehaviour:
   m_ObjectHideFlags: 0

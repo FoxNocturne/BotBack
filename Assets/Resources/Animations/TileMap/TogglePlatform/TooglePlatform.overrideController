@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TooglePlatform
+  m_Controller: {fileID: 9100000, guid: 31199f872feb5c8489b2e4a52d38de5f, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: fc9789bb94a0ba64daecca246388ebe2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3b873862f21934a41a4af9f79590e4f7, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 3b873862f21934a41a4af9f79590e4f7, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: fc9789bb94a0ba64daecca246388ebe2, type: 2}

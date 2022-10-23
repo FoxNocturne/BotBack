@@ -6,15 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class PlayerControler : BotBackManager
 {
-    public GameObject SelectedRobot = null;
     
-    public List<Robot> _listRobot;
     public float CellSize = 0.2f;
-     int botnb = 0;
-    public int botpassed = 0;
-    public ControlWrapperCanvas tool;
+    [SerializeField] private ControlWrapperCanvas _guiRobotControl;
     private bool win = false;
     public bool hasStopped { get; private set; } = false;
+
+    private GameObject SelectedRobot = null;
+    private List<Robot> _listRobot;
 
     public void GoForward()
     {
@@ -57,13 +56,8 @@ public class PlayerControler : BotBackManager
             if (SelectedRobot != null) { SelectedRobot.GetComponent<Robot>().Select(); }
             SelectedRobot = this._listRobot[int.Parse(context.control.name) - 1].gameObject;
             SelectedRobot.GetComponent<Robot>().Select();
-            tool.Show(SelectedRobot.GetComponent<Robot>().visual);
+            this._guiRobotControl.Show(SelectedRobot.GetComponent<Robot>());
         }
-    }
-
-    public void BotAdd()
-    {
-        botnb++;
     }
 
     public void BotAction()
@@ -71,7 +65,6 @@ public class PlayerControler : BotBackManager
         if (!win && SelectedRobot != null)
         {
             SelectedRobot.GetComponent<Robot>().Action();
-            Debug.Log("Action");
         }
     }
 

@@ -11,6 +11,7 @@ public class LevelSerializable
     public LevelSerializableTileMapRow[] tileMap;
     public LevelSerializableEntitySpawn[] listRobotSpawn;
     public LevelSerializableEnemySpawn[] listEnemySpawn;
+    public LevelSerializableEntitySpawn[] listGadgetSpawn;
 
     public int[,] GetIntTileMap() {
         int[,] output = new int[this.tileMap.Length, this.tileMap[0].tileRow.Length];
@@ -45,7 +46,7 @@ public class LevelSerializableMapPosition
     public int y;
 }
 
-    [Serializable]
+[Serializable]
 public class LevelSerializableTileMapRow
 {
     public int[] tileRow;
