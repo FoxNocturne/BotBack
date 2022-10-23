@@ -161,6 +161,7 @@ MonoBehaviour:
   _playerController: {fileID: 28086369}
   _guiBattery: {fileID: 1522212612}
   _guiRobot: {fileID: 1477602023}
+  _guiScore: {fileID: 1404547376}
 --- !u!114 &28086368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,8 +214,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc788d5515191645a297c6865d2f305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CellSize: 1
   _guiRobotControl: {fileID: 625688213}
+  _baseInputCooldown: 0.2
+  CellSize: 1
 --- !u!114 &28086370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1093,6 +1095,18 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1404547376 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4525880233777405889, guid: ac23be3c8a02fb545b35e0d68249086d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1669236774}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9a190c44ba00b4a8abe7153681f898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1428360041
 GameObject:
   m_ObjectHideFlags: 0

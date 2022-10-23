@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: GadgetDictionary
   m_EditorClassIdentifier: 
   _listItem:
+  - {fileID: 18465317178805787, guid: 71049c09513ef3d48b17d2f2e11841f5, type: 3}
   - {fileID: 3232256212714214355, guid: 9112c40c82e5609449f99fba573fa53d, type: 3}

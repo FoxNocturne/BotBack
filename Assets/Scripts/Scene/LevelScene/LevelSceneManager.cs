@@ -4,6 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class LevelSceneManager : MonoBehaviour
 {
+    public static LevelSceneManager instance { get; private set; }
+
+    [Header("World Game Objects")]
     [SerializeField] private Camera mainCamera;
     [SerializeField] private TileMapObject tileMapObject;
 
@@ -11,11 +14,13 @@ public class LevelSceneManager : MonoBehaviour
     [SerializeField] private PlayerControler _playerController;
     [SerializeField] private BatterySlider _guiBattery;
     [SerializeField] private RobotWrapperCanvas _guiRobot;
+    [SerializeField] private ScoreCanvas _guiScore;
 
     public List<Robot> listPlayerRobot { get; private set; }
     public List<EnemyObject> listEnemy { get; private set; }
     public List<GadgetObject> listGadget { get; private set; }
     public LevelTimer levelTimer { get; private set; }
+    public LevelScorer levelScorer { get; private set; }
 
     private LevelSerializableRepository _levelRepository;
     private RobotRepository _robotRepository;
@@ -27,6 +32,7 @@ public class LevelSceneManager : MonoBehaviour
 
     void Start()
     {
+        LevelSceneManager.instance = this;
         this._levelRepository = new LevelSerializableRepository();
         this._robotRepository = new RobotRepository();
         this._enemyRepository = new EnemyRepository();
@@ -34,11 +40,17 @@ public class LevelSceneManager : MonoBehaviour
         this._nbRobotDeath = 0;
         this._nbRobotGoal = 0;
         this.levelTimer = new LevelTimer(this._maxTime);
-        // this.LoadLevel(this._levelRepository.GetById(GameManager.currentLevelId));
-        this.LoadLevel(this._levelRepository.GetById(4));
+        this.levelScorer = new LevelScorer();
+
+        this.LoadLevel(this._levelRepository.GetById(GameManager.currentLevelId));
     }
 
-    public void LoadLevel(LevelSerializable level)
+    void OnDestroy()
+    {
+        LevelSceneManager.instance = null;
+    }
+
+    private void LoadLevel(LevelSerializable level)
     {
         // Instantiate map
         this.tileMapObject.InstantiateTileMap(level.GetIntTileMap());
@@ -77,6 +89,8 @@ public class LevelSceneManager : MonoBehaviour
         this._guiBattery.SetMaxValue(this.levelTimer.remainingTime);
         this.levelTimer.onTimeChanged.AddListener(time => this._guiBattery.SetValue(time));
         this.levelTimer.onTimerEnd.AddListener(() => this.OnTimerEnd());
+        this.levelScorer.onScoreChanged.AddListener(value => this._guiScore.SetValue(value));
+
         StartCoroutine(this.levelTimer.RunTimer());
     }
 
@@ -101,6 +115,7 @@ public class LevelSceneManager : MonoBehaviour
         this.levelTimer.Pause();
         if (this._nbRobotGoal > 0) {
             LevelScoreComputer computer = new LevelScoreComputer();
+            computer.baseScore = this.levelScorer.currentScore;
             computer.nbRobot = this.listPlayerRobot.Count;
             computer.nbRobotSaved = this._nbRobotGoal;
             computer.timeMax = this._maxTime;

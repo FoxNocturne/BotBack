@@ -11,7 +11,6 @@ public class ScoreCanvas : MonoBehaviour
     private int _displayedScore;
     private int _trueScore;
     private bool _isChangingScore;
-    public PlayerControler game;
     private List<int> _listGap = new List<int>() { 1000, 500, 100, 50, 10, 5, 1 };
 
     public void SetValue(int value)
@@ -26,7 +25,7 @@ public class ScoreCanvas : MonoBehaviour
         while (this._displayedScore != this._trueScore) {
             int variation = this._trueScore - this._displayedScore;
             foreach (var gap in this._listGap) {
-                if (variation > gap) { this._displayedScore += gap; break; }
+                if (variation > gap || variation == 1) { this._displayedScore += gap; break; }
             }
             if (this._displayedScore > this._trueScore) { this._displayedScore = this._trueScore; }
             this._valueText.text = this._displayedScore.ToString();

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1184089206}
   - component: {fileID: 1184089207}
   - component: {fileID: 1184089208}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spike (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,4 +241,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshRenderer: {fileID: 0}
-  tileMapPos: {x: 0, y: 0}
