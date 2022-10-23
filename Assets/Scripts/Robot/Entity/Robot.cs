@@ -12,7 +12,6 @@ public abstract class Robot : BotBackManager
     [Header("Robot properties")]
     public Sprite visual;
     public float robotSpeed = 2f;
-    public bool canPressButton = true;
 
     [Header("Robot Sprites")]
     public Sprite forwardSprite;
@@ -30,9 +29,10 @@ public abstract class Robot : BotBackManager
     public Rigidbody rb { get; set; }
     public UnityEvent onDeath { get; protected set; } = new UnityEvent();
     public UnityEvent onGoal { get; protected set; } = new UnityEvent();
+    public UnityEvent onStatusChanged { get; protected set; } = new UnityEvent();
     public RobotMarkerObject markerObject { get; protected set; }
 
-    private void Awake()
+    void Awake()
     {
         this.rb = this.GetComponent<Rigidbody>();
         this.markerObject = this.GetComponentInChildren<RobotMarkerObject>();
@@ -191,6 +191,9 @@ public abstract class Robot : BotBackManager
     public void Death()
     {
         this.onDeath.Invoke();
+        this.onDeath.RemoveAllListeners();
+        this.onGoal.RemoveAllListeners();
+        this.onStatusChanged.RemoveAllListeners();
         Destroy(this.gameObject);
     }
     

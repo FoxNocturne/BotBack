@@ -213,10 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc788d5515191645a297c6865d2f305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SelectedRobot: {fileID: 0}
-  _listRobot: []
   CellSize: 1
-  botpassed: 0
   _guiRobotControl: {fileID: 625688213}
 --- !u!114 &28086370
 MonoBehaviour:
@@ -496,8 +493,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 28086369}
         m_TargetAssemblyTypeName: PlayerControler, Assembly-CSharp
-        m_MethodName: BotAction
-        m_Mode: 1
+        m_MethodName: TriggerRobotAction
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -512,8 +509,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 28086369}
         m_TargetAssemblyTypeName: PlayerControler, Assembly-CSharp
-        m_MethodName: BotStop
-        m_Mode: 1
+        m_MethodName: TriggerRobotStop
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

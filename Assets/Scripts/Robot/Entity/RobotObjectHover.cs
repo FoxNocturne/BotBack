@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Hovering Robot - Siel.
+/// It flies hover tiles and can carry light gadgets
+/// </summary>
 public class RobotObjectHover : Robot
 {
     public GadgetObject gadgetStored { get; private set; }
 
-    private void Update()
+    void Update()
     {
         this.Move();
     }
@@ -26,6 +30,8 @@ public class RobotObjectHover : Robot
         return tile.isFlyable;
     }
 
+    // ===== Specifics of Hovering Robot
+
     /// <summary>
     /// Store gadget of the current map tile
     /// </summary>
@@ -37,6 +43,14 @@ public class RobotObjectHover : Robot
             this.gadgetStored.SetTileObject(null);
             this.gadgetStored.gameObject.SetActive(false);
             this.gadgetStored.transform.SetParent(this.transform);
+
+            // Addition to fire events based on gadget pressing tiles 
+            ITileButtonPress presser = gadget as ITileButtonPress;
+            if (presser != null) {
+                ((ITileButtonPress)gadget).onPressStatusChange.Invoke(false);
+            }
+
+            this.onStatusChanged.Invoke();
         }
     }
 
@@ -52,6 +66,7 @@ public class RobotObjectHover : Robot
             this.gadgetStored.transform.localPosition = Vector3.zero;
             this.gadgetStored.gameObject.SetActive(true);
             this.gadgetStored = null;
+            this.onStatusChanged.Invoke();
         }
     }
 }
