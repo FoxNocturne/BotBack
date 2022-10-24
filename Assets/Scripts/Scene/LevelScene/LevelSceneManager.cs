@@ -15,6 +15,7 @@ public class LevelSceneManager : MonoBehaviour
     [SerializeField] private BatterySlider _guiBattery;
     [SerializeField] private RobotWrapperCanvas _guiRobot;
     [SerializeField] private ScoreCanvas _guiScore;
+    [SerializeField] private LevelUIWorldMessageCanvas _guiWorldMessage;
 
     public List<Robot> listPlayerRobot { get; private set; }
     public List<EnemyObject> listEnemy { get; private set; }
@@ -87,9 +88,10 @@ public class LevelSceneManager : MonoBehaviour
 
         // Initialiser la UI
         this._guiBattery.SetMaxValue(this.levelTimer.remainingTime);
-        this.levelTimer.onTimeChanged.AddListener(time => this._guiBattery.SetValue(time));
-        this.levelTimer.onTimerEnd.AddListener(() => this.OnTimerEnd());
-        this.levelScorer.onScoreChanged.AddListener(value => this._guiScore.SetValue(value));
+        this.levelTimer.onTimeChanged.AddListener(this._guiBattery.SetValue);
+        this.levelTimer.onTimerEnd.AddListener(this.OnTimerEnd);
+        this.levelScorer.onScoreChanged.AddListener(variation => this._guiScore.SetValue(this.levelScorer.currentScore));
+        this.levelScorer.onScoreChangePrinted.AddListener(this._guiWorldMessage.PrintScore);
 
         StartCoroutine(this.levelTimer.RunTimer());
     }

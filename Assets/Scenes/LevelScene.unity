@@ -162,6 +162,7 @@ MonoBehaviour:
   _guiBattery: {fileID: 1522212612}
   _guiRobot: {fileID: 1477602023}
   _guiScore: {fileID: 1404547376}
+  _guiWorldMessage: {fileID: 1491841557}
 --- !u!114 &28086368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1168,6 +1169,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 484baf81348631b4c98233ea6230db1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1491841557 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1491841557, guid: ac23be3c8a02fb545b35e0d68249086d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1669236774}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd682a92069115a4aa5a9ab6d02905d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1522212612 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4525880233439210413, guid: ac23be3c8a02fb545b35e0d68249086d,
@@ -1398,11 +1411,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 4525880233777405889, guid: ac23be3c8a02fb545b35e0d68249086d,
-        type: 3}
-      propertyPath: game
-      value: 
-      objectReference: {fileID: 28086369}
     - target: {fileID: 4525880233896229487, guid: ac23be3c8a02fb545b35e0d68249086d,
         type: 3}
       propertyPath: m_AnchorMax.y

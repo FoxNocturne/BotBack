@@ -12,7 +12,7 @@ public class GadgetObjectCoin : GadgetObject
     {
         Robot robot = other.GetComponent<Robot>();
         if (robot != null && !this._isCollected) {
-            LevelSceneManager.instance.levelScorer.IncreaseScore(this._coinScore);
+            LevelSceneManager.instance.levelScorer.IncreaseScorePrinted(this._coinScore, this.transform.position);
             this._isCollected = true;
             Destroy(this.gameObject);
         }
