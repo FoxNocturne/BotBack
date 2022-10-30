@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
@@ -14,7 +15,7 @@ public class LevelUIPauseCanvas : MonoBehaviour
     public UnityEvent onRestart { get; } = new UnityEvent();
     public UnityEvent onQuit { get; } = new UnityEvent();
     public UnityEvent<bool> onToggle { get; } = new UnityEvent<bool>();
-    public bool isOpen { get; private set; } = false;
+    public bool isOpen { get; private set; } = true;
 
     void Awake()
     {
@@ -27,16 +28,19 @@ public class LevelUIPauseCanvas : MonoBehaviour
     /// </summary>
     public void Open()
     {
-        this.onToggle.Invoke(true);
-        Time.timeScale = 0;
+        if (!this.isOpen) {
+            this.isOpen = true;
+            Time.timeScale = 0;
+            this.onToggle.Invoke(true);
 
-        this._pauseButton.interactable = false;
-        this._pauseButton.gameObject.SetActive(false);
+            this._pauseButton.interactable = false;
+            this._pauseButton.gameObject.SetActive(false);
 
-        this._pauseMenuGroup.alpha = 1;
-        this._pauseMenuGroup.interactable = true;
-        this._pauseMenuGroup.blocksRaycasts = true;
-        this._pauseMenuGroup.gameObject.SetActive(true);
+            this._pauseMenuGroup.alpha = 1;
+            this._pauseMenuGroup.interactable = true;
+            this._pauseMenuGroup.blocksRaycasts = true;
+            this._pauseMenuGroup.gameObject.SetActive(true);
+        }
     }
 
     /// <summary>
@@ -45,16 +49,19 @@ public class LevelUIPauseCanvas : MonoBehaviour
     /// </summary>
     public void Close()
     {
-        this._pauseButton.interactable = true;
-        this._pauseButton.gameObject.SetActive(true);
+        if (this.isOpen) {
+            this.isOpen = false;
+            this._pauseButton.interactable = true;
+            this._pauseButton.gameObject.SetActive(true);
 
-        this._pauseMenuGroup.alpha = 0;
-        this._pauseMenuGroup.interactable = false;
-        this._pauseMenuGroup.blocksRaycasts = false;
-        this._pauseMenuGroup.gameObject.SetActive(false);
+            this._pauseMenuGroup.alpha = 0;
+            this._pauseMenuGroup.interactable = false;
+            this._pauseMenuGroup.blocksRaycasts = false;
+            this._pauseMenuGroup.gameObject.SetActive(false);
 
-        Time.timeScale = 1;
-        this.onToggle.Invoke(false);
+            Time.timeScale = 1;
+            this.onToggle.Invoke(false);
+        }
     }
 
     /// <summary>

@@ -125,6 +125,7 @@ public class PlayerControler : BotBackManager
     }
 
     // ===== Getters / Setters
+
     public void SetListRobot(List<Robot> listRobot)
     {
         this._listRobot = listRobot;
