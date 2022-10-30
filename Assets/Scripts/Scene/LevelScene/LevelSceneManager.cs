@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class LevelSceneManager : MonoBehaviour
@@ -16,7 +18,9 @@ public class LevelSceneManager : MonoBehaviour
     [SerializeField] private RobotWrapperCanvas _guiRobot;
     [SerializeField] private ScoreCanvas _guiScore;
     [SerializeField] private LevelUIWorldMessageCanvas _guiWorldMessage;
+    [SerializeField] private LevelUIPauseCanvas _guiPause;
 
+    public UnityEvent onLevelFinish { get; private set; } = new UnityEvent();
     public List<Robot> listPlayerRobot { get; private set; }
     public List<EnemyObject> listEnemy { get; private set; }
     public List<GadgetObject> listGadget { get; private set; }
@@ -87,6 +91,10 @@ public class LevelSceneManager : MonoBehaviour
         }
 
         // Initialiser la UI
+        this._guiPause.onToggle.AddListener(isPauseOpen => this._playerController.SetInputActive(!isPauseOpen));
+        this._guiPause.onRestart.AddListener(this.RestartLevel);
+        this._guiPause.onQuit.AddListener(this.QuitLevel);
+        this._guiPause.subtitle = "Niveau " + GameManager.currentLevelId.ToString("00");
         this._guiBattery.SetMaxValue(this.levelTimer.remainingTime);
         this.levelTimer.onTimeChanged.AddListener(this._guiBattery.SetValue);
         this.levelTimer.onTimerEnd.AddListener(this.OnTimerEnd);
@@ -96,11 +104,13 @@ public class LevelSceneManager : MonoBehaviour
         StartCoroutine(this.levelTimer.RunTimer());
     }
 
+    // ===== In-game events
+
     private void OnRobotGoal(Robot robot)
     {
         this._nbRobotGoal++;
         if (this._nbRobotGoal + this._nbRobotDeath == this.listPlayerRobot.Count) {
-            this.FinishLevel();
+            StartCoroutine(this.FinishLevel());
         }
     }
 
@@ -108,13 +118,15 @@ public class LevelSceneManager : MonoBehaviour
     {
         this._nbRobotDeath++;
         if (this._nbRobotGoal + this._nbRobotDeath == this.listPlayerRobot.Count) {
-            this.FinishLevel();
+            StartCoroutine(this.FinishLevel());
         }
     }
 
-    private void FinishLevel()
+    private IEnumerator FinishLevel()
     {
         this.levelTimer.Pause();
+        this.onLevelFinish.Invoke();
+        yield return new WaitForSeconds(1);
         if (this._nbRobotGoal > 0) {
             LevelScoreComputer computer = new LevelScoreComputer();
             computer.baseScore = this.levelScorer.currentScore;
@@ -131,5 +143,17 @@ public class LevelSceneManager : MonoBehaviour
     private void OnTimerEnd()
     {
         SceneManager.LoadScene("GameOver");
+    }
+
+    // ===== Naviguation
+
+    private void RestartLevel()
+    {
+        SceneManager.LoadScene("LevelScene");
+    }
+
+    private void QuitLevel()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }

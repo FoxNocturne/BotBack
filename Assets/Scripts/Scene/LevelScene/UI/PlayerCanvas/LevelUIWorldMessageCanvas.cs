@@ -10,4 +10,9 @@ public class LevelUIWorldMessageCanvas : MonoBehaviour
     {
         LevelUIWorldMessageText.InstantiateObject(this._textTemplate, this.transform, value.ToString(), worldPosition);
     }
+
+    public void PrintGoal(int chainLength, int scoreValue, Vector3 worldPosition)
+    {
+
+    }
 }

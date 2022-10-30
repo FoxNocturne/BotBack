@@ -148,16 +148,12 @@ public abstract class Robot : BotBackManager
         if (this.isWalking == true) {
             this.transform.position = Vector3.MoveTowards(this.transform.position, this.position, Time.deltaTime * this.robotSpeed);
         }
-        if (Vector3.Distance(this.transform.position, this.position) == 0)
-        {
+        if (Vector3.Distance(this.transform.position, this.position) == 0) {
             this.isWalking = false;
+            this.tilemap.GetTileAt(this.mapcoord).OnRobotLand(this);
             if (tilemap.checkKill(mapcoord) && !tilemap.checkVoid(mapcoord))
                 Death();
-            if (tilemap.checkWin(mapcoord))
-                Goal();
-        }
-        else
-        {
+        } else {
             this.isWalking = true;
         }
     }
@@ -197,7 +193,7 @@ public abstract class Robot : BotBackManager
         Destroy(this.gameObject);
     }
     
-    public  void Goal()
+    public void Goal()
     {
         this.onGoal.Invoke();
         Destroy(this.gameObject);

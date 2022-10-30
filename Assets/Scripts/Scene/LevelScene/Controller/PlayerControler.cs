@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerControler : BotBackManager
 {
     [Header("UI Components")]
+    [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private ControlWrapperCanvas _guiRobotControl;
 
     [Header("Controller parameters")]
@@ -129,4 +130,9 @@ public class PlayerControler : BotBackManager
         this._listRobot = listRobot;
     }
 
+    public void SetInputActive(bool setActive)
+    {
+        if (setActive && !this._playerInput.inputIsActive) { this._playerInput.ActivateInput(); }
+        else if (!setActive && this._playerInput.inputIsActive) { this._playerInput.DeactivateInput(); }
+    }
 }

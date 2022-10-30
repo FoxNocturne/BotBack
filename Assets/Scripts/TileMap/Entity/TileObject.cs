@@ -53,6 +53,12 @@ public class TileObject : MonoBehaviour
     }
 
     /// <summary>
+    /// Triggered when robot land on tile
+    /// </summary>
+    /// <param name="robot"></param>
+    public virtual void OnRobotLand(Robot robot) { }
+
+    /// <summary>
     /// Change the texture of the tile
     /// </summary>
     /// <param name="mapPos"></param>
