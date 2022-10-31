@@ -27,6 +27,7 @@ public class BatterySlider : MonoBehaviour
     public void SetMaxValue(float value)
     {
         this._slider.maxValue = value;
+        this._slider.value = value;
     }
 
     public void SetValue(float value)

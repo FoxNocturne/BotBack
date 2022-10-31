@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerControler : BotBackManager
@@ -13,6 +14,14 @@ public class PlayerControler : BotBackManager
     [SerializeField] private float _baseInputCooldown = 0.2f;
 
     public float CellSize = 1f;
+
+    /// <summary>Trigerred when player control a robot for the first time.</summary>
+    public UnityEvent onStart { get; } = new UnityEvent();
+
+    /// <summary>Say if the player has already controled a robot of not.</summary>
+    public bool hasStarted { get; private set; } = false;
+
+    /// <summary>Say if the player has already ordered a robot to stop or not.</summary>
     public bool hasStopped { get; private set; } = false;
 
     private Robot _selectedRobot;
@@ -26,6 +35,10 @@ public class PlayerControler : BotBackManager
 
     // ===== Player Inputs
 
+    /// <summary>
+    /// Invoked by PlayerInputSystem.
+    /// Move selected robot up.
+    /// </summary>
     public void GoForward()
     {
         if (this._selectedRobot != null) {
@@ -33,6 +46,10 @@ public class PlayerControler : BotBackManager
         }
     }
 
+    /// <summary>
+    /// Invoked by PlayerInputSystem.
+    /// Move selected robot down.
+    /// </summary>
     public void GoBackward()
     {
         if (this._selectedRobot != null) {
@@ -40,6 +57,10 @@ public class PlayerControler : BotBackManager
         }
     }
 
+    /// <summary>
+    /// Invoked by PlayerInputSystem.
+    /// Move selected robot left.
+    /// </summary>
     public void GoLeft()
     {
         if (this._selectedRobot != null) {
@@ -47,6 +68,10 @@ public class PlayerControler : BotBackManager
         }
     }
 
+    /// <summary>
+    /// Invoked by PlayerInputSystem.
+    /// Move selected robot right.
+    /// </summary>
     public void GoRight()
     {
         if (this._selectedRobot != null) {
@@ -68,6 +93,10 @@ public class PlayerControler : BotBackManager
             && this._listRobot[controlId - 1] != null
             && !this.IsInputUnderCooldown(inputKey)
         ) {
+            if (!this.hasStarted) {
+                this.hasStarted = true;
+                this.onStart.Invoke();
+            }
             if (this._selectedRobot != null) { this._selectedRobot.Select(); }
             this._selectedRobot = this._listRobot[controlId - 1];
             this._selectedRobot.Select();

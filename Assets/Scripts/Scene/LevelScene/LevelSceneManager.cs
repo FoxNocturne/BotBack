@@ -91,6 +91,7 @@ public class LevelSceneManager : MonoBehaviour
         }
 
         // Initialiser la UI
+        this._playerController.onStart.AddListener(this.OnPlayerStart);
         this._guiPause.onToggle.AddListener(isPauseOpen => this._playerController.SetInputActive(!isPauseOpen));
         this._guiPause.onRestart.AddListener(this.RestartLevel);
         this._guiPause.onQuit.AddListener(this.QuitLevel);
@@ -100,11 +101,14 @@ public class LevelSceneManager : MonoBehaviour
         this.levelTimer.onTimerEnd.AddListener(this.OnTimerEnd);
         this.levelScorer.onScoreChanged.AddListener(variation => this._guiScore.SetValue(this.levelScorer.currentScore));
         this.levelScorer.onScoreChangePrinted.AddListener(this._guiWorldMessage.PrintScore);
-
-        StartCoroutine(this.levelTimer.RunTimer());
     }
 
     // ===== In-game events
+
+    private void OnPlayerStart()
+    {
+        StartCoroutine(this.levelTimer.RunTimer());
+    }
 
     private void OnRobotGoal(Robot robot)
     {
