@@ -53,6 +53,11 @@ public class TileObject : MonoBehaviour
     }
 
     /// <summary>
+    /// Setup specific variables after that the whole map has been instantiated.
+    /// </summary>
+    public virtual void AfterMapInit() {} 
+
+    /// <summary>
     /// Triggered when robot land on tile
     /// </summary>
     /// <param name="robot"></param>

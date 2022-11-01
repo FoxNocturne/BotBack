@@ -16,11 +16,20 @@ public class RobotObjectWalk : Robot, ITileButtonPress
         this.Move();
     }
 
-    public override void Action() { }
+    public override void Action() {
+        TileObjectPortal drillableTile = this.tilemap.GetTileAt(this.mapcoord).GetComponent<TileObjectPortal>();
+        if (drillableTile != null && drillableTile.IsDrillable()) {
+            this.Stop();
+            this.position = drillableTile.linkedPortal.transform.position;
+            this.mapcoord = drillableTile.linkedPortal.tileMapPos;
+            this.transform.position = drillableTile.linkedPortal.transform.position;
+            drillableTile.linkedPortal.OnRobotLand(this);
+        }
+    }
 
     public override string GetAbilityName()
     {
-        return "Agir";
+        return "Creuser";
     }
 
     protected override bool CanGoOnTile(TileObject tile)

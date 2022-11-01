@@ -24,13 +24,13 @@ public abstract class Robot : BotBackManager
     public Stat currentStatus { get; protected set; } = Stat.none;
     public float tileSize { get; protected set; }
     public bool isSelected { get; protected set; } = false;
-    protected Vector2Int mapcoord;
     public TileMapObject tilemap { get; protected set; }
     public Rigidbody rb { get; set; }
     public UnityEvent onDeath { get; protected set; } = new UnityEvent();
     public UnityEvent onGoal { get; protected set; } = new UnityEvent();
     public UnityEvent onStatusChanged { get; protected set; } = new UnityEvent();
     public RobotMarkerObject markerObject { get; protected set; }
+    protected Vector2Int mapcoord;
 
     void Awake()
     {

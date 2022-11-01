@@ -3,7 +3,6 @@ using UnityEngine;
 public class TileMapObject : MonoBehaviour
 {
     public Vector2Int size { get; protected set; }
-    public GameObject tilePrefab;
     public TileObject[,] tileMap { get; protected set; }
     protected TileDictionary _tileDictionary;
 
@@ -20,6 +19,9 @@ public class TileMapObject : MonoBehaviour
         for (int x = 0; x < this.size.x; x++)
             for (int y = 0; y < this.size.y; y++)
                 this.tileMap[x, y] = TileObject.InstantiateObject(tileMapPrefab[x, y], this, new Vector2Int(x, y));
+        for (int x = 0; x < this.size.x; x++)
+            for (int y = 0; y < this.size.y; y++)
+                this.tileMap[x, y].AfterMapInit();
         return this.tileMap;
     }
 
